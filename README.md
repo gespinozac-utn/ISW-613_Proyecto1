@@ -1,6 +1,6 @@
 # Universidad Técnica Nacional.
 Carrera: Ingeniería del software.  
-Curso:   Programación en ambiente web I.
+Curso:   Programación en ambiente web I.    
 Alumno : Gustavo Espinoza Corrales.  
 Profesor: Bladimir Arroyo.      
 III Cuatrimestre 2020.
