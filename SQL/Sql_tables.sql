@@ -1,4 +1,7 @@
- create table users(
+CREATE DATABASE ´ISW-613_Proyecto1´;
+USE ´ISW-613_Proyecto1´;
+
+create table users(
     id int not null auto_increment primary key,
     username varchar(150),
     password varchar(100),

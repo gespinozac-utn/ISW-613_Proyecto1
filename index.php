@@ -1,36 +1,39 @@
-<?php 
-    $message = "";
+<?php
+$message = "";
 
-    session_start();
-    if(!empty($_SESSION['user'])){
-        header('location: /dashboard.php');
-    }
+session_start();
+if (!empty($_SESSION['user'])) {
+    header('location: /dashboard.php');
+}
 
-    if(!empty($_REQUEST['status'])){
-        switch($_REQUEST['status']){
-            case 'empty':
-                $message = 'Error, empty fields';
-                break;
-            case 'error':
-                $message = "Username or password incorrect.";
-                break;
-            default:
-                $message = "";
-                break;
-        }
+if (!empty($_REQUEST['status'])) {
+    switch ($_REQUEST['status']) {
+        case 'empty':
+            $message = 'Error, empty fields';
+            break;
+        case 'error':
+            $message = "Username or password incorrect";
+            break;
+        case 'created':
+            $message = "User Created";
+            break;
+        default:
+            $message = "";
+            break;
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-    <style>
-
-    </style>
+    <head>
+        <link rel="shortcut icon" href="https://www.utn.ac.cr/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+    </head>
 
     <body>
         <div class="container">
-            <?php require('style.php');?>
+            <?php require('style.php'); ?>
 
             <section class="navbar u-full-width">
                 <div class="row">
@@ -45,7 +48,7 @@
             </section>
 
             <section class="login">
-                <form action="login.php" method="POST">
+                <form action="/login.php" method="POST">
                     <div class="row">
                         <div class="six columns">
                             <label for="username">Username</label>

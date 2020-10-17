@@ -1,13 +1,22 @@
-<?php 
+<?php
+session_start();
+$message = "";
 
+if (!empty($_REQUEST['message'])) {
+    $message = $_REQUEST['message'];
+}
+
+if (!empty($_SESSION['user'])) {
+    header('location:/index.php');
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-    <style>
-
-    </style>
+    <head>
+        <link rel="shortcut icon" href="https://www.utn.ac.cr/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+    </head>
 
     <body>
         <div class="container">
@@ -26,31 +35,33 @@
             </section>
 
             <section class="create">
-                <form action="#" method="POST" autocomplete="off">
+                <form action="/CRUDClients.php?action=add" method="POST" autocomplete="off">
                     <div class="row">
                         <div class="six columns">
                             <label for="name">Full name</label>
-                            <input type="text" class="u-full-width" placeholder="Name">
+                            <input type="text" name="name" class="u-full-width" placeholder="Name">
                         </div>
                         <div class="six columns">
                             <label for="email">Email</label>
-                            <input type="email" class="u-full-width" placeholder="ExampleEmail@email.com">
+                            <input type="email" name="email" class="u-full-width" placeholder="ExampleEmail@email.com">
                         </div>
                     </div>
                     <div class="row">
                         <div class="four columns">
                             <label for="username">Username</label>
-                            <input type="text" class="u-full-width" placeholder="Username">
+                            <input type="text" name="username" class="u-full-width" placeholder="Username">
                         </div>
                         <div class="four columns">
                             <label for="password">Password</label>
-                            <input type="password" class="u-full-width" placeholder="Password">
+                            <input type="password" name="password" class="u-full-width" placeholder="Password">
                         </div>
                         <div class="four columns">
-                            <label for="repeatPassword">Repeat Password</label>
-                            <input type="password" class="u-full-width" placeholder="Password">
+                            <label for="repeatPassword">Confirm Password</label>
+                            <input type="password" name="repeatPassword" class="u-full-width"
+                                placeholder="Confirm password">
                         </div>
                     </div>
+                    <h6><?php echo $message; ?></h6>
                     <div class="row">
                         <input type="submit" value="Create Account" class="button u-full-width">
                     </div>
