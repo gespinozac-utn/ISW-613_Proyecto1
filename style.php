@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<title>ISW-613 E-Shop</title>
+
+<style>
+body {
+    margin-top: 40px;
+    background-color: aqua;
+}
+
+section {
+    background-color: lightgoldenrodyellow;
+    border-radius: 30px;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.navbar {
+    background: chocolate;
+    height: 50px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    border-radius: 30px;
+    margin-left: 20px;
+}
+
+.navbar a:last-child {
+    margin-right: 20px
+}
+
+.navbar a:hover {
+    color: black;
+    transition: .5s;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    text-align: right;
+    color: black;
+    background-color: white;
+}
+</style>
+
+<footer>
+    <p>
+        &copy 2020 Gustavo Espinoza C.
+    </p>
+</footer>
