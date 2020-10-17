@@ -31,19 +31,29 @@ if (empty($_SESSION['user'])) {
                 <!-- Administrator dashboard -->
                 <div class="row">
                     <div class="four columns">
-                        <h5>clientes registrados <?php echo $registrados; ?> </h5>
+                        <h5>clientes registrados: <?php echo $registrados; ?> </h5>
                     </div>
                     <div class="four columns">
-                        <h5>Prodcutos Vendidos <?php echo $vendidos; ?> </h5>
+                        <h5>Prodcutos Vendidos: <?php echo $vendidos; ?> </h5>
                     </div>
                     <div class="four columns">
-                        <h5>Monto Total de ventas <?php echo $total; ?> </h5>
+                        <h5>Monto Total de ventas: <?php echo $total; ?> </h5>
                     </div>
                 </div>
                 <?php break;
                 case 'Cliente':
-                default: ?>
+                default:
+                    $totalProductos = 0;
+                    $totalMonto = 0; ?>
                 <!-- Client dashboard -->
+                <div class="row">
+                    <div class="six columns">
+                        <h5>Total de productos: <?php echo $totalProductos; ?></h5>
+                    </div>
+                    <div class="six columns">
+                        <h5>Monto total: <?php echo $totalMonto; ?></h5>
+                    </div>
+                </div>
                 <?php break;
             }; ?>
             </section>

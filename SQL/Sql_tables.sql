@@ -17,5 +17,10 @@ create table users(
     address varchar(150)
 );
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', 'admin', 'Administrador');
+ create table category(
+    id int not null auto_increment primary key,
+    name varchar(50),
+    parent varchar(50)
+);
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES (1, 'admin', 'admin', 'Administrador');
