@@ -13,8 +13,6 @@ if (empty($_GET) || $user->get_role() != 'Administrador') {
 if (!empty($_GET['delete'])) {
     if (deleteCategory($_GET['delete'])) {
         header('location:/category.php');
-    } else {
-        echo "Error";
     }
 } else if (!empty($_GET['edit'])) {
     //editar

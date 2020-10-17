@@ -24,7 +24,7 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                 <div class="container">
                     <div class="row">
                         <div class="six columns">
-                            <a href="/categoryFunctions.php" class="button button-primary">Create</a>
+                            <a href="/createCategory.php" class="button button-primary">Create</a>
                         </div>
                         <div class="six columns">
                             <div class="u-pull-right">
