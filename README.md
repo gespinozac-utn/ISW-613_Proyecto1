@@ -13,13 +13,13 @@ La empresa de ventas en línea E-shop lo ha contratado a usted para que diseñe 
 
 ### Funcionalidades
 La aplicación debe cumplir con los siguientes requerimietos funcionales:
-- [ ] Existen dos tipos de usuarios: Administradores y Clientes.
-- [ ] Es necesario un usuario y una contraseña para poder ingresar al sistema ya sea como administrador o como cliente.
-- [ ] Existirá de manera predeterminada un usuario Administrador.
+- [X] Existen dos tipos de usuarios: Administradores y Clientes.
+- [X] Es necesario un usuario y una contraseña para poder ingresar al sistema ya sea como administrador o como cliente.
+- [X] Existirá de manera predeterminada un usuario Administrador.
 - [ ] **Perspectiva de Administrador** 
     - [ ] *Solo el usuario con rol de administrador tendrá acceso a esta sección si un usuario con otro rol intenta acceder deberá ser redireccionado a una página que indique que no posee acceso a dicha funcionalidad.* 
     - [ ] *La primera página de inicio mostrará las siguientes estadísticas (Dashboard)*:
-        - [ ] Cantidad de Clientes Registrados
+        - [X] Cantidad de Clientes Registrados
         - [ ] Cantidad de productos vendidos.
         - [ ] Monto total de ventas.
     - [ ] *El Administrador será capaz de Administrar Categorías, esto permitirá*
@@ -35,9 +35,9 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
             - [ ] Eliminar productos.
     - [ ] *Cerrar sessión*
 - [ ] **Perspectiva de Cliente**
-    - [ ] Un usuario deberá registrarse para poder realizar compras. Un registro de cliente
+    - [X] Un usuario deberá registrarse para poder realizar compras. Un registro de cliente
     consiste en los siguientes datos:
-        - [ ] Nombre, Apellidos, Número de Teléfono, Correo Electrónico, Dirección, contraseña
+        - [X] Nombre, Apellidos, Número de Teléfono, Correo Electrónico, Dirección, contraseña
     - [ ] El usuario podrá ingresar al catálogo de productos. El catálogo listará todas las categorías y al darle click a la categoría mostrará las sub-categorías y los productos asociados a la categoría.
     - [ ] Al darle click a un producto la aplicación mostrará el detalle del producto. Nombre, descripción, sku,imagen y un botón para agregar al carrito de compras.
     - [ ] Los clientes pueden agregar artículos a su carrito de compras.

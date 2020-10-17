@@ -5,15 +5,19 @@ class Client
     private $id,
         $idUsuario,
         $name,
-        $email;
+        $email,
+        $phone,
+        $address;
 
     //Contructor
-    function __construct($name = null, $email = null, $idUsuario = null, $id = null)
+    function __construct($name = null, $email = null, $phone = null, $address = null, $idUsuario = null, $id = null)
     {
         $this->id = $id;
         $this->idUsuario = $idUsuario;
         $this->name = $name;
         $this->email = $email;
+        $this->phone = $phone;
+        $this->address = $address;
     }
 
     //Set methods
@@ -33,6 +37,14 @@ class Client
     {
         $this->email = $email;
     }
+    public function set_phone($phone)
+    {
+        $this->phone = $phone;
+    }
+    public function set_address($address)
+    {
+        $this->address = $address;
+    }
 
     //Get methods
     public function get_id()
@@ -50,5 +62,13 @@ class Client
     public function get_email()
     {
         return $this->email;
+    }
+    public function get_phone()
+    {
+        return $this->phone;
+    }
+    public function get_address()
+    {
+        return $this->address;
     }
 }

@@ -47,6 +47,16 @@ if (!empty($_SESSION['user'])) {
                         </div>
                     </div>
                     <div class="row">
+                        <div class="six columns">
+                            <label for="phone">Phone number</label>
+                            <input type="text" name="phone" class="u-full-width" placeholder="Phone number">
+                        </div>
+                        <div class="six columns">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" class="u-full-width" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="four columns">
                             <label for="username">Username</label>
                             <input type="text" name="username" class="u-full-width" placeholder="Username">

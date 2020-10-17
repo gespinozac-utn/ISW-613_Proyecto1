@@ -18,7 +18,9 @@ function registerClient()
             $newU = new User($_REQUEST['username'], $_REQUEST['password']);
             $newC = new Client(
                 $_REQUEST['name'],
-                $_REQUEST['email']
+                $_REQUEST['email'],
+                $_REQUEST['phone'],
+                $_REQUEST['address']
             );
             if (!existUser($newU->get_userName())) {
                 $newU = addUser($newU);
@@ -43,7 +45,12 @@ function registerClient()
 
 function emptyFields()
 {
-    return (empty($_REQUEST['name']) || empty($_REQUEST['email']) || empty($_REQUEST['password']) || empty($_REQUEST['repeatPassword']));
+    return (empty($_REQUEST['name']) ||
+        empty($_REQUEST['email']) ||
+        empty($_REQUEST['password']) ||
+        empty($_REQUEST['repeatPassword']) ||
+        empty($_REQUEST['phone']) ||
+        empty($_REQUEST['address']));
 }
 
 function comparePassword()

@@ -9,11 +9,13 @@ function addClient($client)
     $name = $client->get_name();
     $email = $client->get_email();
     $idUsuario = $client->get_idUsuario();
+    $phone = $client->get_phone();
+    $address = $client->get_address();
 
-    $sql = 'INSERT INTO clients(`name`,`email`,`idUser`) VALUES(?,?,?);';
+    $sql = 'INSERT INTO clients(`name`,`email`,`idUser`, `phone`,`address`) VALUES(?,?,?,?,?);';
 
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssi", $name, $email, $idUsuario);
+        $stmt->bind_param("ssiss", $name, $email, $idUsuario, $phone, $address);
         $result = $stmt->execute();
         $client = clientByIdUser($idUsuario);
         $stmt->close();
@@ -45,6 +47,8 @@ function clientById($id)
     $newClient = new Client(
         $result['name'],
         $result['email'],
+        $result['phone'],
+        $result['address'],
         $result['idUser'],
         $result['id']
     );
@@ -65,6 +69,8 @@ function clientByIdUser($idUser)
     $newClient = new Client(
         $result['name'],
         $result['email'],
+        $result['phone'],
+        $result['address'],
         $result['idUser'],
         $result['id']
     );
@@ -92,7 +98,7 @@ function getAllClients()
 {
     $conn = getConnection();
     $clients = [];
-    $sql = "SELECT `id`,`name`,`email`,`idUser` FROM clients;";
+    $sql = "SELECT `id`,`name`,`email`,`idUser`, `phone`,`address` FROM clients;";
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();
@@ -104,6 +110,8 @@ function getAllClients()
             $newClient = new Client(
                 $row['name'],
                 $row['email'],
+                $row['phone'],
+                $row['address'],
                 $row['idUser'],
                 $row['id']
             );
