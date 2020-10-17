@@ -12,7 +12,9 @@ create table users(
     id int not null auto_increment primary key,
     idUser int not null,
     name varchar(150),
-    email varchar(100)
+    email varchar(100),
+    phone varchar(150),
+    address varchar(150)
 );
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
