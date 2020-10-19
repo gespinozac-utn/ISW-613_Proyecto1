@@ -8,7 +8,7 @@ create table users(
     role varchar(13) DEFAULT 'Cliente'
 );
 
- create table clients(
+create table clients(
     id int not null auto_increment primary key,
     idUser int not null,
     name varchar(150),
@@ -17,7 +17,7 @@ create table users(
     address varchar(150)
 );
 
- create table category(
+create table category(
     id int not null auto_increment primary key,
     name varchar(50),
     parent varchar(50)

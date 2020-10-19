@@ -29,7 +29,7 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
             <?php require_once('header.php'); ?>
 
             <section>
-                <form action="#" method="POST">
+                <form action="/CRUDCategories.php?create=true.php" method="POST">
                     <h3 style="text-align: center;">Create category</h3>
 
                     <div class="row">
@@ -46,7 +46,6 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
                     <div class="row">
                         <input type="submit" value="Create" class="button-primary u-pull-right">
                     </div>
-
                 </form>
             </section>
         </div>
