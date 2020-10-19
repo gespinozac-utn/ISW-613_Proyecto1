@@ -29,13 +29,13 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
             <?php require_once('header.php'); ?>
 
             <section>
-                <form action="/CRUDCategories.php?create=true.php" method="POST">
+                <form action="/CRUDCategories.php?create=true" method="POST">
                     <h3 style="text-align: center;">Create category</h3>
 
                     <div class="row">
                         <div class="six columns">
                             <label for="name">Category name</label>
-                            <input type="text" class="u-full-width" name="name" placeholder="Name">
+                            <input type="text" class="u-full-width" name="name" placeholder="Name" required>
                         </div>
                         <div class="six columns">
                             <label for="parent">Category parent</label>

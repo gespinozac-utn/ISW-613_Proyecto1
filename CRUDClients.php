@@ -30,7 +30,7 @@ function registerClient()
                 if (!empty($newU) && !empty($newC)) {
                     header('location:/index.php?status=created');
                 } else {
-                    header('location:/createAccount.php?message=Error,%20can`t%20create%20user');
+                    header('location:/createAccount.php?message=Error,%20can`t%20created%20user');
                 }
             } else {
                 header('location:/createAccount.php?message=Username%20already%20taken');

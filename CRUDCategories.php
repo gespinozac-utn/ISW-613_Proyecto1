@@ -10,15 +10,22 @@ if (empty($_SESSION) || $_SESSION['user']->get_role() != 'Administrador') {
 $user = $_SESSION['user'];
 $userAdmin = $user->get_role();
 
-if (!empty($_POST)) {
-    if (!emptyFields()) {
-    } else {
-        header('location:/category.php?message=Empty%20Fields');
-    }
-}
-
 if (empty($_GET) || !$userAdmin) {
     header('location:/index.php');
+}
+
+if (!empty($_POST) && ((empty($_GET['create']) ? false : $_GET['create']) === 'true')) {
+    echo 'true create';die;
+    if (!emptyFields()) {
+        $newCategory = new Category($_REQUEST['name'], $_REQUEST['parent']);
+        if(!empty(addCategory($newCategory))){
+
+        }else{
+
+        }
+    } else {
+        header('location:/createCategory.php?message=Empty%20Fields');
+    }
 }
 
 if (!empty($_GET['delete']) && $userAdmin) {
@@ -31,5 +38,5 @@ if (!empty($_GET['delete']) && $userAdmin) {
 
 function emptyFields()
 {
-    return (empty($_REQUEST['name']) || empty($_REQUEST['parent']));
+    return (empty($_REQUEST['name']));
 }

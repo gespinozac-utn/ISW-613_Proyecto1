@@ -39,36 +39,36 @@ if (!empty($_SESSION['user'])) {
                     <div class="row">
                         <div class="six columns">
                             <label for="name">Full name</label>
-                            <input type="text" name="name" class="u-full-width" placeholder="Name">
+                            <input type="text" name="name" class="u-full-width" placeholder="Name" required>
                         </div>
                         <div class="six columns">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="u-full-width" placeholder="ExampleEmail@email.com">
+                            <input type="email" name="email" class="u-full-width" placeholder="ExampleEmail@email.com" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="six columns">
                             <label for="phone">Phone number</label>
-                            <input type="text" name="phone" class="u-full-width" placeholder="Phone number">
+                            <input type="text" name="phone" class="u-full-width" placeholder="Phone number" required>
                         </div>
                         <div class="six columns">
                             <label for="address">Address</label>
-                            <input type="text" name="address" class="u-full-width" placeholder="Address">
+                            <input type="text" name="address" class="u-full-width" placeholder="Address" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="four columns">
                             <label for="username">Username</label>
-                            <input type="text" name="username" class="u-full-width" placeholder="Username">
+                            <input type="text" name="username" class="u-full-width" placeholder="Username" required>
                         </div>
                         <div class="four columns">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="u-full-width" placeholder="Password">
+                            <input type="password" name="password" class="u-full-width" placeholder="Password" required>
                         </div>
                         <div class="four columns">
                             <label for="repeatPassword">Confirm Password</label>
                             <input type="password" name="repeatPassword" class="u-full-width"
-                                placeholder="Confirm password">
+                                placeholder="Confirm password" required>
                         </div>
                     </div>
                     <h6><?php echo $message; ?></h6>
