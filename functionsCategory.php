@@ -6,9 +6,8 @@ function getByName($category)
 {
     $conn = getConnection();
     $name = $category->get_name();
-    $parent = $category->get_parent();
 
-    $sql = "SELECT * FROM category WHERE `name`='$name' AND `parent`='$parent';";
+    $sql = "SELECT * FROM category WHERE `name`='$name'";
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();
@@ -24,12 +23,34 @@ function getByName($category)
     return (!empty($result['id']) ? $newCategory : false);
 }
 
+function getById($category)
+{
+    $conn = getConnection();
+    $id = $category->get_id();
+
+    $sql = "SELECT * FROM category WHERE `id`='$id'";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+    $conn->close();
+    $result = $result->fetch_array();
+    $newCategory = new Category(
+        $result['name'],
+        $result['parent'],
+        $result['id']
+    );
+    return (!empty($result['name']) ? $newCategory : false);
+}
+
 function addCategory($category)
 {
     $conn = getConnection();
     $result = false;
     $name = $category->get_name();
     $parent = empty($category->get_parent()) ? "---" : $category->get_parent();
+    $category->set_Parent($parent);
 
     $sql = 'INSERT INTO category(`name`,`parent`) VALUES(?,?);';
 

@@ -1,5 +1,5 @@
 <?php 
-    require('usersFunctions.php');
+    require('functionsUser.php');
     
     if($_POST){
         if(!emptyFields()){

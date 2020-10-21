@@ -1,7 +1,7 @@
 <?php
 
-require_once('clientsFunctions.php');
-require_once('usersFunctions.php');
+require_once('functionsClient.php');
+require_once('functionsUser.php');
 
 if ($_POST && !empty($_REQUEST['action'])) {
     switch ($_REQUEST['action']) {

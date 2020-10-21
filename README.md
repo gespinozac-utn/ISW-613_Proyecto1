@@ -24,7 +24,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
         - [ ] Monto total de ventas.
     - [ ] *El Administrador será capaz de Administrar Categorías, esto permitirá*
         - [X] Listar todas las categorías existentes.
-        - [ ] Crear una nueva categoría. Las categorías estarán compuestas por Nombre y Categoría Padre (opcional)
+        - [X] Crear una nueva categoría. Las categorías estarán compuestas por Nombre y Categoría Padre (opcional)
         - [ ] Editar una categoria.
         - [ ] Eliminar categorías, esto es posible solo si la categoría no tiene productos asociados.
     - [ ] *El Administrador será capaz de Administrar Productos, esto permitirá*

@@ -1,5 +1,5 @@
 <?php
-require_once('categoryFunctions.php');
+require_once('functionsCategory.php');
 require_once('classCategory.php');
 require_once('classUser.php');
 
@@ -12,8 +12,7 @@ if($_GET){
         if(!empty($_POST)){
             switch($_REQUEST['action']){
                 case 'add':
-                    echo 'add';
-                    // addNewCategory();
+                    addNewCategory();
                     break;
                 case 'edit':
                     echo 'edit';
@@ -22,7 +21,8 @@ if($_GET){
                     header('location:/index.php');
                     break;
             }
-        }else if($_REQUEST['action'] === 'delete'){
+        }else if($_REQUEST['action'] === 'delete' && !empty($_REQUEST['id'])){
+            deleteCategory($_REQUEST['id']);
             header('location:/category.php');
         }
     }else{header('location:/index.php');}
@@ -33,9 +33,8 @@ function addNewCategory(){
         $newCategory = new Category($_REQUEST['name'], $_REQUEST['parent']);
         if(!empty(addCategory($newCategory))){
             header('location:/createCategory.php?message=Category%20added');
-
         }else{
-
+            header('location:/createCategory.php?message=Error%20adding%20category.Try%20again.');
         }
     } else {
         header('location:/createCategory.php?message=Empty%20Fields');
