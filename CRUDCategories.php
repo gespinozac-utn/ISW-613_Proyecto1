@@ -4,21 +4,35 @@ require_once('classCategory.php');
 require_once('classUser.php');
 
 session_start();
-if (empty($_SESSION) || $_SESSION['user']->get_role() != 'Administrador') {
-    header('location:/index.php');
-}
-$user = $_SESSION['user'];
-$userAdmin = $user->get_role();
+$user = empty($_SESSION) ? null : $_SESSION['user'];
+$userAdmin = empty($user) ? false : ($user->get_role() === 'Administrador');
 
-if (empty($_GET) || !$userAdmin) {
-    header('location:/index.php');
-}
+if($_GET){
+    if(!empty($_GET) && $userAdmin){
+        if(!empty($_POST)){
+            switch($_REQUEST['action']){
+                case 'add':
+                    echo 'add';
+                    // addNewCategory();
+                    break;
+                case 'edit':
+                    echo 'edit';
+                    break;
+                default:
+                    header('location:/index.php');
+                    break;
+            }
+        }else if($_REQUEST['action'] === 'delete'){
+            header('location:/category.php');
+        }
+    }else{header('location:/index.php');}
+}else{header('location:/index.php');}
 
-if (!empty($_POST) && ((empty($_GET['create']) ? false : $_GET['create']) === 'true')) {
-    echo 'true create';die;
+function addNewCategory(){
     if (!emptyFields()) {
         $newCategory = new Category($_REQUEST['name'], $_REQUEST['parent']);
         if(!empty(addCategory($newCategory))){
+            header('location:/createCategory.php?message=Category%20added');
 
         }else{
 
@@ -28,15 +42,11 @@ if (!empty($_POST) && ((empty($_GET['create']) ? false : $_GET['create']) === 't
     }
 }
 
-if (!empty($_GET['delete']) && $userAdmin) {
-    if (deleteCategory($_GET['delete'])) {
-        header('location:/category.php');
-    }
-} else if (!empty($_GET['edit']) && $userAdmin) {
-    //editar
-}
-
 function emptyFields()
 {
     return (empty($_REQUEST['name']));
+}
+
+function totalCategories(){
+    return count(getAllCategories());
 }

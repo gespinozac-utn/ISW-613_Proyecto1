@@ -66,9 +66,8 @@ function loadTable()
     <td> <?php echo $category->get_name(); ?> </td>
     <td> <?php echo $category->get_parent(); ?> </td>
     <td>
-        <a href="/CRUDCategories.php?edit=<?php echo $category->get_id(); ?>">Edit</a> | <a
-            href="/CRUDCategories.php?delete=<?php echo $category->get_id(); ?>"
-            onclick="return confirm('Are you sure?')">Delete</a>
+        <a href="?action=edit&id=<?php echo $category->get_id(); ?>">Edit</a> | 
+        <a href="/CRUDCategories.php?action=delete&id=<?php echo $category->get_id(); ?>"onclick="return confirm('Are you sure?')">Delete</a>
     </td>
 </tr>
 
