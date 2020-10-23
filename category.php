@@ -28,8 +28,10 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                         </div>
                         <div class="six columns">
                             <div class="u-pull-right">
-                                <input type="text" placeholder="Search" name="filter" title="Search for name">
-                                <a href="#" title="Search"><i class="fas fa-search"></i></a>
+                                <form action="category.php" method="GET">
+                                    <input type="text" placeholder="Search" name="search" title="Search for name">
+                                    <button type="submit"><i class="fas fa-search" style="color:grey"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -59,7 +61,7 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
 
 function loadTable()
 {
-    $categories = getAllCategories();
+    $categories = searchCategories($_GET ? $_REQUEST['search'] : "");
     foreach ($categories as $category) { ?>
 <tr>
     <td> <?php echo $category->get_id(); ?> </td>

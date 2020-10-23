@@ -2,7 +2,7 @@
 require_once('sqlConnection.php');
 require_once('classCategory.php');
 
-function getByName($category)
+function categoryByName($category)
 {
     $conn = getConnection();
     $name = $category->get_name();
@@ -23,10 +23,9 @@ function getByName($category)
     return (!empty($result['id']) ? $newCategory : false);
 }
 
-function getById($category)
+function categoryById($id)
 {
     $conn = getConnection();
-    $id = $category->get_id();
 
     $sql = "SELECT * FROM category WHERE `id`='$id'";
     $result = $conn->query($sql);
@@ -57,7 +56,7 @@ function addCategory($category)
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("ss", $name, $parent);
         $result = $stmt->execute();
-        $category = getByName($category);
+        $category = categoryByName($category);
         $stmt->close();
     } else {
         $error = $conn->errno . ' ' . $conn->error;
@@ -73,11 +72,12 @@ function addCategory($category)
     }
 }
 
-function getAllCategories()
+function searchCategories($filter = '')
 {
+    $filter = "`name` LIKE '%" . $filter . "%' OR `parent` LIKE '%" . $filter . "%' ";
     $conn = getConnection();
     $categories = [];
-    $sql = "SELECT `id`,`name`,`parent` FROM category;";
+    $sql = "SELECT `id`,`name`,`parent` FROM category WHERE " . $filter . ";";
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();
@@ -112,4 +112,35 @@ function deleteCategory($id)
     $conn->close();
 
     return $result;
+}
+
+function updateCategory($category)
+{
+    $conn = getConnection();
+    $result = false;
+    $name = $category->get_name();
+    $parent = empty($category->get_parent()) ? "---" : $category->get_parent();
+    $id = $category->get_id();
+    $category->set_Parent($parent);
+
+    $sql = 'UPDATE category SET  `name` = ? ,`parent`=? WHERE `id`=?;';
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sss", $name, $parent, $id);
+        $result = $stmt->execute();
+        $category = categoryById($id);
+        $stmt->close();
+    } else {
+        $error = $conn->errno . ' ' . $conn->error;
+        $stmt->close();
+        $category = null;
+        echo $error;
+    }
+    $conn->close();
+
+    if ($result && !empty($category->get_id())) {
+        return $category;
+    } else {
+        return false;
+    }
 }

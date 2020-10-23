@@ -40,15 +40,11 @@ $user = $_SESSION['user'];
 
 function createSection()
 {
-    $category = new Category();
-    $category->set_id($_REQUEST['id']);
-    $category = getById($category);
-
+    $category = categoryById($_REQUEST['id']);
     $message = "";
-
 ?>
 <section>
-    <form action="/CRUDCategories.php?action=edit" method="POST">
+    <form action="/CRUDCategories.php?action=edit&id=<?php echo $category->get_id(); ?>" method="POST">
         <h3 style="text-align: center;">Edit category</h3>
 
         <div class="row">

@@ -7,33 +7,53 @@ session_start();
 $user = empty($_SESSION) ? null : $_SESSION['user'];
 $userAdmin = empty($user) ? false : ($user->get_role() === 'Administrador');
 
-if($_GET){
-    if(!empty($_GET) && $userAdmin){
-        if(!empty($_POST)){
-            switch($_REQUEST['action']){
+if ($_GET) {
+    if (!empty($_GET) && $userAdmin) {
+        if (!empty($_POST)) {
+            switch ($_REQUEST['action']) {
                 case 'add':
                     addNewCategory();
                     break;
                 case 'edit':
-                    echo 'edit';
+                    editCategory();
                     break;
                 default:
                     header('location:/index.php');
                     break;
             }
-        }else if($_REQUEST['action'] === 'delete' && !empty($_REQUEST['id'])){
+        } else if ($_REQUEST['action'] === 'delete' && !empty($_REQUEST['id'])) {
             deleteCategory($_REQUEST['id']);
             header('location:/category.php');
         }
-    }else{header('location:/index.php');}
-}else{header('location:/index.php');}
+    } else {
+        header('location:/index.php');
+    }
+} else {
+    header('location:/index.php');
+}
 
-function addNewCategory(){
+function editCategory()
+{
+    if (!emptyFields()) {
+        $category = categoryById($_REQUEST['id']);
+        $category->set_name($_REQUEST['name']);
+        $category->set_parent($_REQUEST['parent']);
+        if (updateCategory($category)) {
+            header('location:/category.php');
+        } else {
+            $header = 'editCategory.php' . $category->get_id();
+            header('location:/' . $header);
+        }
+    }
+}
+
+function addNewCategory()
+{
     if (!emptyFields()) {
         $newCategory = new Category($_REQUEST['name'], $_REQUEST['parent']);
-        if(!empty(addCategory($newCategory))){
+        if (!empty(addCategory($newCategory))) {
             header('location:/createCategory.php?message=Category%20added');
-        }else{
+        } else {
             header('location:/createCategory.php?message=Error%20adding%20category.Try%20again.');
         }
     } else {
@@ -46,6 +66,7 @@ function emptyFields()
     return (empty($_REQUEST['name']));
 }
 
-function totalCategories(){
+function totalCategories()
+{
     return count(getAllCategories());
 }
