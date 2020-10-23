@@ -13,7 +13,7 @@ require('style.php');
                 <!-- Menu Administrador -->
                 <?php if ($user->get_role() === 'Administrador') { ?>
                 <a href="/category.php" title="Category"><i class="fas fa-tag fa-2x"></i></a>
-                <a href="#" title="Product"><i class="fas fa-box-open fa-2x"></i></a>
+                <a href="/product.php" title="Product"><i class="fas fa-box-open fa-2x"></i></a>
                 <?php } else { ?>
                 <!-- Menu Cliente -->
                 <a href="#" title="Checkout" class="u-pull-right"><i class="fas fa-shopping-basket fa-2x"></i></a>

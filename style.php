@@ -18,46 +18,6 @@ section {
     padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-table {
-    width: 100%;
-    border-spacing: 0;
-}
-
-thead,
-tbody,
-tr,
-th,
-td {
-    display: block;
-}
-
-thead tr {
-    /* fallback */
-    width: 97%;
-    /* minus scroll bar width */
-    width: calc(100% - 16px);
-}
-
-tr:after {
-    /* clearing float */
-    content: ' ';
-    display: block;
-    visibility: hidden;
-    clear: both;
-}
-
-tbody {
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-tbody td,
-thead th {
-    width: 20%;
-    float: left;
-}
-
 .navbar {
     background: chocolate;
     height: 50px;
@@ -83,14 +43,61 @@ thead th {
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2rem;
-    text-align: right;
-    color: black;
-    background-color: white;
+    display: none;
+}
+
+@media (min-width: 1000px) {
+    table {
+        width: 100%;
+        border-spacing: 0;
+    }
+
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+    }
+
+    thead tr {
+        /* fallback */
+        width: 97%;
+        /* minus scroll bar width */
+        width: calc(100% - 16px);
+    }
+
+    tr:after {
+        /* clearing float */
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    tbody {
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    tbody td,
+    thead th {
+        width: 20%;
+        float: left;
+    }
+
+    footer {
+        display: block;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2rem;
+        text-align: right;
+        color: black;
+        background-color: white;
+    }
 }
 </style>
 

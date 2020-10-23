@@ -1,12 +1,13 @@
 <?php
 require_once('classUser.php');
-require_once('functionsCategory.php');
+require_once('functionsproduct.php');
 session_start();
 $user = $_SESSION['user'];
 if (empty($_SESSION) || $user->get_role() != 'Administrador') {
     header('location:/index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,15 +21,15 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
             <?php require_once('header.php') ?>
 
             <section>
-                <h3 style="text-align: center;">Category</h3>
+                <h3 style="text-align: center;">Product</h3>
                 <div class="container">
                     <div class="row">
                         <div class="six columns">
-                            <a href="/createCategory.php" class="button button-primary">Create</a>
+                            <a href="#.php" class="button button-primary">Create</a>
                         </div>
                         <div class="six columns">
                             <div class="u-pull-right">
-                                <form action="category.php" method="GET">
+                                <form action="/product.php" method="GET">
                                     <input type="text" placeholder="Search" name="search" title="Search for name">
                                     <button type="submit"><i class="fas fa-search" style="color:grey"></i></button>
                                 </form>
@@ -38,15 +39,16 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                     <table class="u-full-width">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>SKU</th>
+                                <th>Name</th>
                                 <th>Category</th>
-                                <th>Parent</th>
                                 <th>Utility</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                        loadTable(); ?>
+                        // loadTable(); 
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -57,12 +59,12 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
 
 </html>
 
-<?php
+<!-- <?php
 
-function loadTable()
-{
-    $categories = searchCategories($_GET ? $_REQUEST['search'] : "");
-    foreach ($categories as $category) { ?>
+        function loadTable()
+        {
+            $categories = searchCategories($_GET ? $_REQUEST['search'] : "");
+            foreach ($categories as $category) { ?>
 <tr>
     <td> <?php echo $category->get_id(); ?> </td>
     <td> <?php echo $category->get_name(); ?> </td>
@@ -76,5 +78,5 @@ function loadTable()
 </tr>
 
 <?php }
-}
-?>
+        }
+?> -->

@@ -17,7 +17,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
 - [X] Es necesario un usuario y una contraseña para poder ingresar al sistema ya sea como administrador o como cliente.
 - [X] Existirá de manera predeterminada un usuario Administrador.
 - [ ] **Perspectiva de Administrador** 
-    - [ ] *Solo el usuario con rol de administrador tendrá acceso a esta sección si un usuario con otro rol intenta acceder deberá ser redireccionado a una página que indique que no posee acceso a dicha funcionalidad.* 
+    - [X] *Solo el usuario con rol de administrador tendrá acceso a esta sección si un usuario con otro rol intenta acceder deberá ser redireccionado ~~a una página que indique que no posee acceso a dicha funcionalidad~~ al dashboard.* 
     - [ ] *La primera página de inicio mostrará las siguientes estadísticas (Dashboard)*:
         - [X] Cantidad de Clientes Registrados
         - [ ] Cantidad de productos vendidos.
@@ -25,7 +25,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
     - [ ] *El Administrador será capaz de Administrar Categorías, esto permitirá*
         - [X] Listar todas las categorías existentes.
         - [X] Crear una nueva categoría. Las categorías estarán compuestas por Nombre y Categoría Padre (opcional)
-        - [ ] Editar una categoria.
+        - [x] Editar una categoria.
         - [ ] Eliminar categorías, esto es posible solo si la categoría no tiene productos asociados.
     - [ ] *El Administrador será capaz de Administrar Productos, esto permitirá*
         - [ ] Listar todos los productos existentes.
@@ -33,7 +33,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
             - [ ] SKU, Nombre, Descripción, Imagen, Categoria (lista de categorías existentes), Stock, Precio.
             - [ ] Editar un producto.
             - [ ] Eliminar productos.
-    - [ ] *Cerrar sessión*
+    - [X] *Cerrar sessión*
 - [ ] **Perspectiva de Cliente**
     - [X] Un usuario deberá registrarse para poder realizar compras. Un registro de cliente
     consiste en los siguientes datos:

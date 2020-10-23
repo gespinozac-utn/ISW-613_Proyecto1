@@ -68,5 +68,5 @@ function emptyFields()
 
 function totalCategories()
 {
-    return count(getAllCategories());
+    return count(searchCategories());
 }

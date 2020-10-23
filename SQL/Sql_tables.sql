@@ -23,4 +23,15 @@ create table category(
     parent varchar(50)
 );
 
+create table product(
+    id int not null auto_increment primary key,
+    sku varchar(50) not null,
+    name varchar(50),
+    description varchar(150),
+    imageURL varchar(100),
+    idCategory int,
+    stock int,
+    price float
+);
+
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES (1, 'admin', 'admin', 'Administrador');
