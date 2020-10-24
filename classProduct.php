@@ -130,7 +130,7 @@ class Product
     /** Get ID 
      * @return INTEGER Unique number
      */
-    public function getID()
+    public function getId()
     {
         return $this->id;
     }
@@ -178,7 +178,7 @@ class Product
     /** Get Price
      * @return FLOAT Price
      */
-    public function FunctionName()
+    public function getPrice()
     {
         return $this->price;
     }
