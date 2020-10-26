@@ -35,3 +35,17 @@ create table product(
 );
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES (1, 'admin', 'admin', 'Administrador');
+
+SELECT 
+        p.`SKU`,
+        p.`name`,
+        p.`description`,
+        p.`idCategory`,
+        c.`name` as CATEGORY
+    FROM product as p 
+        INNER JOIN category as c  on (p.idCategory = c.id);
+
+SELECT p.name,p.description,p.sku,c.name AS categoryName
+    FROM product as p
+        INNER JOIN category AS c ON (p.idCategory = c.id)
+WHERE p.`name` LIKE "%%" OR p.`SKU` LIKE "%%" OR c.`name` LIKE "%%";
