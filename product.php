@@ -25,7 +25,7 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                 <div class="container">
                     <div class="row">
                         <div class="six columns">
-                            <a href="#.php" class="button button-primary">Create</a>
+                            <a href="createProduct.php" class="button button-primary">Create</a>
                         </div>
                         <div class="six columns">
                             <div class="u-pull-right">
@@ -46,9 +46,7 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                        // loadTable(); 
-                        ?>
+                            <?php loadTable(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -59,24 +57,23 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
 
 </html>
 
-<!-- <?php
+<?php
 
-        function loadTable()
-        {
-            $categories = searchCategories($_GET ? $_REQUEST['search'] : "");
-            foreach ($categories as $category) { ?>
+function loadTable()
+{
+    $products = searchProduct($_GET ? $_REQUEST['search'] : "");
+    foreach ($products as $product) { ?>
 <tr>
-    <td> <?php echo $category->get_id(); ?> </td>
-    <td> <?php echo $category->get_name(); ?> </td>
-    <td> <?php echo $category->get_parent(); ?> </td>
+    <td> <?php echo $product->getSKU(); ?> </td>
+    <td> <?php echo $product->getName(); ?> </td>
+    <td> <?php echo $product->getIdCategory(); ?> </td>
     <td>
-        <a href="editCategory.php?id=<?php echo $category->get_id(); ?>">Edit</a> |
-        <a href="/CRUDCategories.php?action=delete&id=<?php echo $category->get_id(); ?>"
+        <a href="editProduct.php?id=<?php echo $product->getId(); ?>">Edit</a> |
+        <a href="/CRUDProduct.php?action=delete&id=<?php echo $product->getId(); ?>"
             onclick="return confirm('Are you sure?')">Delete</a>
     </td>
 
 </tr>
 
 <?php }
-        }
-?> -->
+} ?>

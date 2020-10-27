@@ -179,12 +179,16 @@ function deleteProduct($id)
 
 function searchProduct($filter = '')
 {
-    $filter = "`name` LIKE '%" . $filter . "%' OR 
-                `SKU` LIKE '%" . $filter . "%' OR
-                `category´ LIKE '%" . $filter . "%'";
+    $filter = "p.`name` LIKE '%" . $filter . "%' OR 
+                p.`SKU` LIKE '%" . $filter . "%' OR
+                c.`name` LIKE '%" . $filter . "%'";
     $conn = getConnection();
-    $categories = [];
-    $sql = "SELECT `id`,`name`,`parent` FROM category WHERE " . $filter . ";";
+    $products = [];
+    $sql = "SELECT p.*,c.name AS categoryName
+            FROM product as p
+                INNER JOIN category AS c ON (p.idCategory = c.id)
+            WHERE " . $filter . ";";
+
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();
@@ -193,17 +197,20 @@ function searchProduct($filter = '')
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = $result->fetch_assoc()) {
-            $newCategory = new Category(
+            $newProduct = new Product(
+                $row['sku'],
                 $row['name'],
-                $row['parent'],
+                $row['description'],
+                $row['imageURL'],
+                $row['idCategory'],
+                $row['stock'],
+                $row['price'],
                 $row['id']
             );
-            array_push($categories, $newCategory);
+            array_push($products, $newProduct);
         }
     }
     $conn->close();
 
-    return $categories;
+    return $products;
 }
-
-// addProduct(new Product('sku123456789', 'encendedor', 'encendedor', 'none', 15, 8, 1000));

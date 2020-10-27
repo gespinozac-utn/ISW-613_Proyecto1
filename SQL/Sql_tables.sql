@@ -45,7 +45,9 @@ SELECT
     FROM product as p 
         INNER JOIN category as c  on (p.idCategory = c.id);
 
-SELECT p.name,p.description,p.sku,c.name AS categoryName
-    FROM product as p
-        INNER JOIN category AS c ON (p.idCategory = c.id)
-WHERE p.`name` LIKE "%%" OR p.`SKU` LIKE "%%" OR c.`name` LIKE "%%";
+-- SELECT p.*,c.name AS categoryName 
+-- FROM product as p 
+--     INNER JOIN category AS c ON (p.idCategory = c.id) 
+-- WHERE p.`name` LIKE '%%' OR 
+            -- p.`SKU` LIKE '%%' OR 
+            -- c.`name` LIKE '%%';
