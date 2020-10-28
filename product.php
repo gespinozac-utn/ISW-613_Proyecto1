@@ -59,17 +59,22 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
 
 <?php
 
+
 function loadTable()
 {
+    include_once('functionsCategory.php');
     $products = searchProduct($_GET ? $_REQUEST['search'] : "");
-    foreach ($products as $product) { ?>
+
+    foreach ($products as $product) {
+        $category = categoryById($product->getIdCategory());
+?>
 <tr>
     <td> <?php echo $product->getSKU(); ?> </td>
     <td> <?php echo $product->getName(); ?> </td>
-    <td> <?php echo $product->getIdCategory(); ?> </td>
+    <td> <?php echo $category->get_name(); ?> </td>
     <td>
         <a href="editProduct.php?id=<?php echo $product->getId(); ?>">Edit</a> |
-        <a href="/CRUDProduct.php?action=delete&id=<?php echo $product->getId(); ?>"
+        <a href="/CRUDProducts.php?action=delete&id=<?php echo $product->getId(); ?>"
             onclick="return confirm('Are you sure?')">Delete</a>
     </td>
 

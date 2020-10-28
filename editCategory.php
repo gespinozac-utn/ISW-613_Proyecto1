@@ -65,5 +65,4 @@ function createSection()
         </div>
     </form>
 </section>
-<?php }
-?>
+<?php } ?>

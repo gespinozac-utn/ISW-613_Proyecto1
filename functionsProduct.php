@@ -27,10 +27,10 @@ function productById($id)
     return (!empty($newProduct->getID()) ? $newProduct : false);
 }
 
-function getAllProducts()
+function getAllProductsByCategory($idCategory)
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM product;";
+    $sql = "SELECT * FROM product WHERE idCategory = " . $idCategory;
     $products = [];
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
@@ -50,10 +50,10 @@ function getAllProducts()
                 $row['price'],
                 $row['id']
             );
+            array_push($products, $newProduct);
         }
     }
     $conn->close();
-
     return $products;
 }
 
@@ -76,15 +76,14 @@ function addProduct($product)
                                 `idCategory`,
                                 `stock`,
                                 `price`) 
-            VALUES(?,?,?,?,?,?,?);';
+            VALUES(?,?,?,"' . $imageURL . '",?,?,?);';
 
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param(
-            "ssssiid",
+            "sssiid",
             $sku,
             $name,
             $description,
-            $imageURL,
             $idCategory,
             $stock,
             $price
@@ -124,7 +123,7 @@ function updateProduct($product)
                                 `SKU` = ? ,
                                 `name`=?,
                                 `description`=?,
-                                `imageURL`=?,
+                                `imageURL`="' . $imageURL . '",
                                 `idCategory`=?,
                                 `stock`=?,
                                 `price`=?
@@ -132,11 +131,10 @@ function updateProduct($product)
 
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param(
-            "ssssiidi",
+            "sssiidi",
             $sku,
             $name,
             $description,
-            $imageURL,
             $idCategory,
             $stock,
             $price,
@@ -147,8 +145,6 @@ function updateProduct($product)
         $stmt->close();
     } else {
         $error = $conn->errno . ' ' . $conn->error;
-        echo $error;
-        die;
         $stmt->close();
         $product = null;
         echo $error;

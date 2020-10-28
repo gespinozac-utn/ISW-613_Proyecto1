@@ -29,7 +29,7 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
             <?php require_once('header.php'); ?>
 
             <section>
-                <form action="/CRUDCategories.php?action=add" method="POST">
+                <form action="/CRUDProducts.php?action=add" method="POST">
                     <h3 style="text-align: center;">Create Product</h3>
 
                     <div class="row">
@@ -45,13 +45,13 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
                     <div class="row">
                         <div class="six columns">
                             <label for="parent">Image URL</label>
-                            <input type="text" name="imgeURL" placeholder="Image URL" class="u-full-width">
+                            <input type="text" name="imageURL" placeholder="Image URL" class="u-full-width">
                         </div>
                         <div class="six columns">
                             <label for="name">Category</label>
                             <!-- SELECT COMBOBOX  -->
                             <select name="category" id="category" class="u-full-width">
-                                <option value="None">---</option>
+                                <!-- <option value="-1">---</option> -->
                                 <?php loadComboBox(); ?>
                             </select>
                         </div>

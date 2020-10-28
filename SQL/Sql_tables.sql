@@ -51,3 +51,9 @@ SELECT
 -- WHERE p.`name` LIKE '%%' OR 
             -- p.`SKU` LIKE '%%' OR 
             -- c.`name` LIKE '%%';
+
+
+-- SELECT p.* FROM product AS p 
+--     INNER JOIN category AS c ON (p.idCategory = c.id)
+--     INNER JOIN category as parent ON (c.id = parent.id)
+-- WHERE p.idCategory = '' AND parent.name = c.parent;

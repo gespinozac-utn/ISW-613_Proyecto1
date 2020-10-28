@@ -3,6 +3,11 @@ require_once('classUser.php');
 require_once('functionsCategory.php');
 session_start();
 $user = $_SESSION['user'];
+$message = "";
+
+if (!empty($_REQUEST['message'])) {
+    $message = $_REQUEST['message'];
+}
 if (empty($_SESSION) || $user->get_role() != 'Administrador') {
     header('location:/index.php');
 }
@@ -23,10 +28,13 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
                 <h3 style="text-align: center;">Category</h3>
                 <div class="container">
                     <div class="row">
-                        <div class="six columns">
+                        <div class="four columns">
                             <a href="/createCategory.php" class="button button-primary">Create</a>
                         </div>
-                        <div class="six columns">
+                        <div class="three columns">
+                            <p style="color: red;"><?php echo $message; ?></p>
+                        </div>
+                        <div class="five columns">
                             <div class="u-pull-right">
                                 <form action="category.php" method="GET">
                                     <input type="text" placeholder="Search" name="search" title="Search for name">
@@ -70,7 +78,7 @@ function loadTable()
     <td>
         <a href="editCategory.php?id=<?php echo $category->get_id(); ?>">Edit</a> |
         <a href="/CRUDCategories.php?action=delete&id=<?php echo $category->get_id(); ?>"
-            onclick="return confirm('Are you sure?')">Delete</a>
+            onclick="return confirm('Are you sure?');">Delete</a>
     </td>
 
 </tr>
