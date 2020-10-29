@@ -54,5 +54,5 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
             - [ ] Cantidad
             - [ ] Descripción
             - [ ] Precio
-- [ ] ***Cronjob (php script)***
-    - [ ] Desarrollar un script que busque los productos con cierto nivel de stock y que el mismo envíe un correo electrónico al administrador con el asunto “Productos con bajo stock”, en el contenido del correo indicar el SKU de los productos con bajo stock. El script recibirá como parámetro el stock mínimo a consultar, de manera que si al ejecutar el script se envía como parámetro el número 3, entonces el script identificara y reportará aquellos productos cuyo stock es menor o igual a 3. 
+- [X] ***Cronjob (php script)***
+    - [X] Desarrollar un script que busque los productos con cierto nivel de stock y que el mismo envíe un correo electrónico al administrador con el asunto “Productos con bajo stock”, en el contenido del correo indicar el SKU de los productos con bajo stock. El script recibirá como parámetro el stock mínimo a consultar, de manera que si al ejecutar el script se envía como parámetro el número 3, entonces el script identificara y reportará aquellos productos cuyo stock es menor o igual a 3. 

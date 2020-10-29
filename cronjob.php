@@ -10,7 +10,7 @@ if ($argc == 2) {
     $message .= "<h1>Low Stock products listen below:</h1>";
     $message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
     $message .= "<tr style='background: #eee;'><td><strong>SKU:</strong> </td><td><strong>Name:</strong> </td><td>Quantity</td></tr>";
-    $headers = "Content-Type: text/html; charset=ISO-8859-1\r\n";
+    $headers = "Content-Type: text/html; charset=ISO-8859-1\r\n"; //ADD type content to the email to work with html tags 
     $numMin = $argv[1];
 
     $sql = 'SELECT * FROM product WHERE stock <= ' . $numMin . ';';
@@ -25,6 +25,9 @@ if ($argc == 2) {
         while ($row = $result->fetch_assoc()) {
             $message .= '<tr><td>' . $row['sku'] . '</td><td>' . $row['name'] . '</td><td>' . $row['stock'] . '</td></tr>';
         }
+    } else {
+        echo 'No low stock equal or lower than [' . $numMin . '].';
+        die;
     }
 
     $message .= '</table></body></html>';
