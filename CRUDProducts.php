@@ -45,7 +45,7 @@ function addNewProduct()
             $_REQUEST['price']
         );
         if (!empty(addProduct($newProduct))) {
-            header('location:/createProduct.php?message=Category%20added');
+            header('location:/createProduct.php?message=Product%20added');
         } else {
             header('location:/createProduct.php?message=Error%20adding%20product.Try%20again.');
         }
@@ -71,9 +71,6 @@ function editProduct()
             $header = 'editProduct.php?id=' . $product->getId();
             header('location:/' . $header);
         }
-    } else {
-        var_dump($_REQUEST);
-        die;
     }
 }
 

@@ -144,3 +144,30 @@ function updateCategory($category)
         return false;
     }
 }
+
+function getAllChild($idParent)
+{
+    $conn = getConnection();
+    $sql = 'SELECT c.* FROM category AS c
+                INNER JOIN category AS p ON(p.name = c.parent)
+            WHERE p.id = ' . $idParent . ';';
+    $childrens = [];
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newCategory = new Category(
+                $row['name'],
+                $row['parent'],
+                $row['id']
+            );
+            array_push($childrens, $newCategory);
+        }
+    }
+    $conn->close();
+    return $childrens;
+}
