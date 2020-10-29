@@ -27,11 +27,11 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
         - [X] Crear una nueva categoría. Las categorías estarán compuestas por Nombre y Categoría Padre (opcional)
         - [x] Editar una categoria.
         - [ ] Eliminar categorías, esto es posible solo si la categoría no tiene productos asociados.
-    - [ ] *El Administrador será capaz de Administrar Productos, esto permitirá*
+    - [X] *El Administrador será capaz de Administrar Productos, esto permitirá*
         - [X] Listar todos los productos existentes.
-        - [ X Crear un nuevo producto. Los productos estarán compuestos por:
+        - [X] Crear un nuevo producto. Los productos estarán compuestos por:
             - [X] SKU, Nombre, Descripción, Imagen, Categoria (lista de categorías existentes), Stock, Precio.
-            - [ ] Editar un producto.
+            - [X] Editar un producto.
             - [X] Eliminar productos.
     - [X] *Cerrar sessión*
 - [ ] **Perspectiva de Cliente**
