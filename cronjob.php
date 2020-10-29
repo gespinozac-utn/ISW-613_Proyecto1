@@ -10,6 +10,7 @@ if ($argc == 2) {
     $message .= "<h1>Low Stock products listen below:</h1>";
     $message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
     $message .= "<tr style='background: #eee;'><td><strong>SKU:</strong> </td><td><strong>Name:</strong> </td><td>Quantity</td></tr>";
+    $headers = "Content-Type: text/html; charset=ISO-8859-1\r\n";
     $numMin = $argv[1];
 
     $sql = 'SELECT * FROM product WHERE stock <= ' . $numMin . ';';
@@ -26,12 +27,7 @@ if ($argc == 2) {
         }
     }
 
-    ini_set("SMTP", 'smtp.office365.com');
-    ini_set("smtp_port", '587');
-    ini_set("sendmail_from", 'gespinozac@est.utn.ac.cr');
-    ini_set("sendmail_path", "C:\xampp\bin\sendmail.exe -t");
-
     $message .= '</table></body></html>';
-    mail($adminMail, $subject, $message);
-    echo 'Mail sended to ' . $adminMail;
+    if (mail($adminMail, $subject, $message, $headers))
+        echo 'Mail sended to ' . $adminMail;
 }
