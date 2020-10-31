@@ -69,7 +69,7 @@ if (empty($_SESSION) || $user->get_role() != 'Administrador') {
 
 function loadTable()
 {
-    $categories = searchCategories($_GET ? $_REQUEST['search'] : "");
+    $categories = searchCategories($_GET && !empty($_REQUEST['search']) ? $_REQUEST['search'] : "");
     foreach ($categories as $category) { ?>
 <tr>
     <td> <?php echo $category->get_id(); ?> </td>

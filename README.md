@@ -22,11 +22,11 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
         - [X] Cantidad de Clientes Registrados
         - [ ] Cantidad de productos vendidos.
         - [ ] Monto total de ventas.
-    - [ ] *El Administrador será capaz de Administrar Categorías, esto permitirá*
+    - [X] *El Administrador será capaz de Administrar Categorías, esto permitirá*
         - [X] Listar todas las categorías existentes.
         - [X] Crear una nueva categoría. Las categorías estarán compuestas por Nombre y Categoría Padre (opcional)
         - [x] Editar una categoria.
-        - [ ] Eliminar categorías, esto es posible solo si la categoría no tiene productos asociados.
+        - [X] Eliminar categorías, esto es posible solo si la categoría no tiene productos asociados.
     - [X] *El Administrador será capaz de Administrar Productos, esto permitirá*
         - [X] Listar todos los productos existentes.
         - [X] Crear un nuevo producto. Los productos estarán compuestos por:

@@ -22,11 +22,11 @@ if ($_GET) {
                     break;
             }
         } else if ($_REQUEST['action'] === 'delete' && !empty($_REQUEST['id'])) {
-            if (!categoryProduct()) {
-                // deleteCategory($_REQUEST['id']);
+            if (validateDelete()) {
+                deleteCategory($_REQUEST['id']);
                 header('location:/category.php');
             } else {
-                header('location:/category.php?message=category%20with%20products.Can`t%20delete.');
+                header('location:/category.php?message=Error.Can`t%20delete.Try%20Again.');
             }
         }
     } else {
@@ -36,13 +36,22 @@ if ($_GET) {
     header('location:/index.php');
 }
 
-function categoryProduct()
+function validateDelete()
 {
     include_once('functionsProduct.php');
     $category = categoryById($_REQUEST['id']);
 
-    var_dump(count(getAllProductsByCategory($category->get_id())) > 0);
-    die;
+    if (!(count(getAllChild($category->get_id())) > 0)) {
+        if (!(count(getAllProductsByCategory($category->get_id())) > 0)) {
+            return true;
+        } else {
+            header('location:/category.php?message=Category%20with%20products.Can`t%20delete.');
+            die;
+        }
+    } else {
+        header('location:/category.php?message=Category%20with%20childs.Can`t%20delete.');
+        die;
+    }
 }
 
 function editCategory()
