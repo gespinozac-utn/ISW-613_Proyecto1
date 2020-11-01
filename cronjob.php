@@ -1,10 +1,10 @@
 <?php
 // Desarrollar un script que busque los productos con cierto nivel de stock y que el mismo envíe un correo electrónico al administrador con el asunto “Productos con bajo stock”, en el contenido del correo indicar el SKU de los productos con bajo stock. El script recibirá como parámetro el stock mínimo a consultar, de manera que si al ejecutar el script se envía como parámetro el número 3, entonces el script identificara y reportará aquellos productos cuyo stock es menor o igual a 3. 
 
-if ($argc == 2) {
+if ($argc >= 2) {
     include('sqlConnection.php');
     $conn = getConnection();
-    $adminMail = 'gespinozac@est.utn.ac.cr'; //'barroyo@adm.utn.ac.cr';
+    $adminMail = empty($argv[2]) ? 'gespinozac@est.utn.ac.cr' : $argv[2]; //'barroyo@adm.utn.ac.cr';
     $subject = 'Low stock products';
     $message = '<html><body>';
     $message .= "<h1>Low Stock products listen below:</h1>";
