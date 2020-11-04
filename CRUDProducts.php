@@ -42,7 +42,7 @@ function newImage()
         move_uploaded_file($target_temp, $target_file);
         return $target_file;
     } else {
-        return '';
+        return null;
     }
 }
 

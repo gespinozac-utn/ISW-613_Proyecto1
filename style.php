@@ -37,8 +37,12 @@ section {
     margin-right: 20px
 }
 
+.navbar a:hover,
+a:hover {
+    color: orangered;
+}
+
 .navbar a:hover {
-    color: black;
     transition: .5s;
 }
 

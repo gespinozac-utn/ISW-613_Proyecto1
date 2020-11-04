@@ -57,6 +57,39 @@ function getAllProductsByCategory($idCategory)
     return $products;
 }
 
+function getAllProducts($idCategory = null)
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM product ";
+    if (!empty($idCategory)) {
+        $sql .= "WHERE idCategory = " . $idCategory;
+    }
+    $products = [];
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newProduct = new Product(
+                $row['sku'],
+                $row['name'],
+                $row['description'],
+                $row['imageURL'],
+                $row['idCategory'],
+                $row['stock'],
+                $row['price'],
+                $row['id']
+            );
+            array_push($products, $newProduct);
+        }
+    }
+    $conn->close();
+    return $products;
+}
+
 function addProduct($product)
 {
     $conn = getConnection();
@@ -64,7 +97,7 @@ function addProduct($product)
     $sku = $product->getSKU();
     $name = $product->getName();
     $description = $product->getDescription();
-    $imageURL = $product->getImageURL();
+    $imageURL = empty($product->getImageURL()) ? 'UPLOADS/PLACEHOLDER.png' : $product->getImageURL();
     $idCategory = $product->getIdCategory();
     $stock = $product->getStock();
     $price = $product->getPrice();
@@ -177,12 +210,14 @@ function searchProduct($filter = '')
 {
     $filter = "p.`name` LIKE '%" . $filter . "%' OR 
                 p.`SKU` LIKE '%" . $filter . "%' OR
-                c.`name` LIKE '%" . $filter . "%'";
+                c.`name` LIKE '%" . $filter . "%' OR
+                pa.`name` LIKE '%" . $filter . "%'";
     $conn = getConnection();
     $products = [];
     $sql = "SELECT p.*,c.name AS categoryName
             FROM product as p
                 INNER JOIN category AS c ON (p.idCategory = c.id)
+                INNER JOIN category AS pa ON (c.parent = pa.name)
             WHERE " . $filter . ";";
 
     $result = $conn->query($sql);

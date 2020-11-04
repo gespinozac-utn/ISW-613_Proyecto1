@@ -49,9 +49,11 @@ SELECT
 -- SELECT p.*,c.name AS categoryName 
 -- FROM product as p 
 --     INNER JOIN category AS c ON (p.idCategory = c.id) 
+--     INNER JOIN category AS pa ON (c.parent = pa.name)
 -- WHERE p.`name` LIKE '%%' OR 
-            -- p.`SKU` LIKE '%%' OR 
-            -- c.`name` LIKE '%%';
+--             p.`SKU` LIKE '%%' OR 
+--             c.`name` LIKE '%%' OR
+--             pa.`name` LIKE '%%';
 
 -- CONSULTA PARA BUSCAR CATEGORIAS CON PRODUCTOS RELACIONADOS
 -- SELECT p.* FROM product AS p 
@@ -62,3 +64,13 @@ SELECT
 -- SELECT c.* FROM category AS c
 --     INNER JOIN category AS p ON(p.name = c.parent)
 -- WHERE p.id = '';
+
+-- SELECTOR DE BUSQUEDA CON FILTROS EN producto nombre y sku, categoria nombre y padre
+-- SELECT p.name,c.name AS categoryName 
+-- FROM product as p 
+--     INNER JOIN category AS c ON (p.idCategory = c.id) 
+--     INNER JOIN category AS pa ON (pa.name = c.parent)
+-- WHERE p.`name` LIKE '%%' OR 
+--             p.`SKU` LIKE '%%' OR 
+--             c.`name` LIKE '%%' OR
+--             pa.`name` LIKE '%%';

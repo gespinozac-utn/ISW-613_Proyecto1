@@ -1,5 +1,6 @@
 <?php
 require_once('classUser.php');
+require_once('CRUDCatalogue.php');
 session_start();
 if (empty($_SESSION['user'])) {
     echo "<h1 style='color: red;'>Unauthorized Access.</h1>";
@@ -50,15 +51,18 @@ $user = $_SESSION['user'];
 
         .product-image img {
             max-width: 100%;
+            border-radius: 15%;
+            width: 110px;
+            height: 110px;
         }
 
         .product-info {
             margin-top: auto;
         }
 
-        div>a {
-            text-decoration: none !important;
-            color: black !important;
+        .product-card>a {
+            text-decoration: none;
+            color: black;
         }
 
         .product-info>h6,
@@ -96,10 +100,12 @@ $user = $_SESSION['user'];
                 <!-- CODE GOES HERE -->
                 <div class="content">
 
-                    <div class="product-card">
+                    <?php createCatalogue($_GET ? $_REQUEST['id'] : null); ?>
+
+                    <!--<div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/chaquetacuero.jpg" height="110" width="110">
+                                <img src="uploads/chaquetacuero.jpg">
                             </div>
                             <div class="product-info">
                                 <h5>Leather Jacket</h5>
@@ -111,7 +117,7 @@ $user = $_SESSION['user'];
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/snicker.jpg" height="110" width="110">
+                                <img src="uploads/snicker.jpg">
                             </div>
                             <div class="product-info">
                                 <h5>Snicker</h5>
@@ -123,7 +129,7 @@ $user = $_SESSION['user'];
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/Blusa-Azul.jpg" height="110" width="110">
+                                <img src="uploads/Blusa-Azul.jpg">
                             </div>
                             <div class=" product-info">
                                 <h5>Blusa Azul</h5>
@@ -131,11 +137,11 @@ $user = $_SESSION['user'];
                             </div>
                         </a>
                     </div>
-                    <!-- 
+                     
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/placeholder.png" height="110" width="110">
+                                <img src="uploads/placeholder.png">
                             </div>
                             <div class="product-info">
                                 <h5>NONE</h5>
@@ -147,7 +153,7 @@ $user = $_SESSION['user'];
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/placeholder.png" height="110" width="110">
+                                <img src="uploads/placeholder.png">
                             </div>
                             <div class="product-info">
                                 <h5>NONE</h5>
@@ -159,7 +165,7 @@ $user = $_SESSION['user'];
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/placeholder.png" height="110" width="110">
+                                <img src="uploads/placeholder.png">
                             </div>
                             <div class="product-info">
                                 <h5>NONE</h5>
@@ -171,7 +177,7 @@ $user = $_SESSION['user'];
                     <div class="product-card">
                         <a href="#">
                             <div class="product-image">
-                                <img src="uploads/placeholder.png" height="110" width="110">
+                                <img src="uploads/placeholder.png">
                             </div>
                             <div class="product-info">
                                 <h5>NONE</h5>
