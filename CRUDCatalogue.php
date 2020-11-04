@@ -28,10 +28,15 @@ function createProductCard($product)
     </div>';
 }
 
-function createSideMenu()
+function createSideMenu($idPa = null)
 {
-    foreach (filterByCategory(null) as $cat) {
+    $idPa = !empty($idPa) ? $idPa : '---';
+    // Parent categories.
+    $parents = searchCategories($idPa);
+    foreach ($parents as $cat) {
         createListItem($cat);
+    }
+    if (count($parents) === 1) {
     }
 }
 
