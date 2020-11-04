@@ -28,7 +28,7 @@ create table product(
     sku varchar(50) not null,
     name varchar(50),
     description varchar(150),
-    imageURL varchar(100),
+    imageURL varchar(100) DEFAULT 'UPLOADS/PLACEHOLDER.png',
     idCategory int,
     stock int,
     price float
