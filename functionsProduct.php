@@ -214,12 +214,49 @@ function searchProduct($filter = '')
                 pa.`name` LIKE '%" . $filter . "%'";
     $conn = getConnection();
     $products = [];
-    $sql = "SELECT p.*,c.name AS categoryName
+    $sql = "SELECT DISTINCT p.*,c.name AS categoryName
             FROM product as p
                 INNER JOIN category AS c ON (p.idCategory = c.id)
-                INNER JOIN category AS pa ON (c.parent = pa.name)
+                INNER JOIN category AS pa ON (c.parent = pa.name OR p.idCategory = pa.id)
             WHERE " . $filter . ";";
 
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newProduct = new Product(
+                $row['sku'],
+                $row['name'],
+                $row['description'],
+                $row['imageURL'],
+                $row['idCategory'],
+                $row['stock'],
+                $row['price'],
+                $row['id']
+            );
+            array_push($products, $newProduct);
+        }
+    }
+    $conn->close();
+
+    return $products;
+}
+
+function filterByCategory($idCategory = null)
+{
+    $conn = getConnection();
+    $products = [];
+    $sql = "SELECT DISTINCT p.*
+            FROM product AS p
+                INNER JOIN category AS c ON (p.idCategory = c.id)
+                INNER JOIN category AS pa ON (p.idCategory = pa.id OR c.parent = pa.name)
+            WHERE c.id = '" . $idCategory . "' OR pa.id = '" . $idCategory . "';";
+    var_dump($sql);
+    die;
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();

@@ -69,8 +69,15 @@ SELECT
 -- SELECT p.name,c.name AS categoryName 
 -- FROM product as p 
 --     INNER JOIN category AS c ON (p.idCategory = c.id) 
---     INNER JOIN category AS pa ON (pa.name = c.parent)
--- WHERE p.`name` LIKE '%%' OR 
---             p.`SKU` LIKE '%%' OR 
---             c.`name` LIKE '%%' OR
---             pa.`name` LIKE '%%';
+--     INNER JOIN category AS pa ON (pa.name = c.parent OR p.idCategory = pa.id)
+-- WHERE p.`name` LIKE '%Ropa%' OR 
+--             p.`SKU` LIKE '%Ropa%' OR 
+--             c.`name` LIKE '%Ropa%' OR
+--             pa.`name` LIKE '%Ropa%';
+
+-- SELECTOR DE FILTRADO PARA BUSCAR PRODUCTOS POR CATEGORIA
+-- SELECT DISTINCT p.*
+-- FROM product AS p
+--     INNER JOIN category AS c ON (p.idCategory = c.id)
+--     INNER JOIN category AS pa ON (p.idCategory = pa.id OR c.parent = pa.name)
+-- WHERE c.id = '' or pa.id = '';

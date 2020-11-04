@@ -76,120 +76,22 @@ $user = $_SESSION['user'];
         <div class="container">
             <?php require('header.php'); ?>
             <section class="catalogue">
+
                 <div class="side-menu">
                     <ul>
                         <span><strong>Category</strong></span>
                         <li>
-                            <a href="#">All</a>
+                            <a href="/catalogue.php">All</a>
                         </li>
-                        <li>
-                            <a href="#">Ropa</a>
-                        </li>
-                        <li>
-                            <a href="#">Comida</a>
-                        </li>
-                        <span><strong>SubCategory</strong></span>
-                        <li>
-                            <a href="#">Ropa de hombres</a>
-                        </li>
-                        <li>
-                            <a href="#">Ropa de mujer</a>
-                        </li>
+                        <?php createSideMenu(); ?>
                     </ul>
                 </div>
-                <!-- CODE GOES HERE -->
+
                 <div class="content">
-
-                    <?php createCatalogue($_GET ? $_REQUEST['id'] : null); ?>
-
-                    <!--<div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/chaquetacuero.jpg">
-                            </div>
-                            <div class="product-info">
-                                <h5>Leather Jacket</h5>
-                                <h6>&#8353;35000</h6>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/snicker.jpg">
-                            </div>
-                            <div class="product-info">
-                                <h5>Snicker</h5>
-                                <h6>&#8353;750</h6>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/Blusa-Azul.jpg">
-                            </div>
-                            <div class=" product-info">
-                                <h5>Blusa Azul</h5>
-                                <h6>&#8353;5500</h6>
-                            </div>
-                        </a>
-                    </div>
-                     
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/placeholder.png">
-                            </div>
-                            <div class="product-info">
-                                <h5>NONE</h5>
-                                <h6>&#8353;0</h6>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/placeholder.png">
-                            </div>
-                            <div class="product-info">
-                                <h5>NONE</h5>
-                                <h6>&#8353;0</h6>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/placeholder.png">
-                            </div>
-                            <div class="product-info">
-                                <h5>NONE</h5>
-                                <h6>&#8353;0</h6>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="#">
-                            <div class="product-image">
-                                <img src="uploads/placeholder.png">
-                            </div>
-                            <div class="product-info">
-                                <h5>NONE</h5>
-                                <h6>&#8353;0</h6>
-                            </div>
-                        </a>
-                    </div> -->
-
+                    <?php createCatalogue($_GET && !empty($_REQUEST['id']) ? $_REQUEST['id'] : null); ?>
                 </div>
+
             </section>
-
-
         </div>
     </body>
 

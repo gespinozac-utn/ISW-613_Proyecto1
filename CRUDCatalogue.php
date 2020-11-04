@@ -27,3 +27,29 @@ function createProductCard($product)
         </a>
     </div>';
 }
+
+function createSideMenu()
+{
+    foreach (filterByCategory(null) as $cat) {
+        createListItem($cat);
+    }
+}
+
+function createListItem($category)
+{
+    echo '
+    <li>
+        <a href="/catalogue.php?id=' . $category->get_id() . '">' . $category->get_name() . '</a>
+    </li>
+    ';
+}
+
+// <li>
+//  <a href="#">All</a>
+// </li>
+
+// {{{ SUBCATEGORY SECTION }}}
+// <span><strong>SubCategory</strong></span>
+// <li>
+//  <a href="#">Ropa de hombres</a>
+// </li>
