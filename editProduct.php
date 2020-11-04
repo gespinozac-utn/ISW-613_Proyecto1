@@ -55,7 +55,8 @@ function createSection()
     $message = "";
     ?>
 <section>
-    <form action="/CRUDProducts.php?action=edit&id=<?php echo $product->getId(); ?>" method="POST">
+    <form action="/CRUDProducts.php?action=edit&id=<?php echo $product->getId(); ?>" method="POST"
+        enctype="multipart/form-data">
         <h3 style="text-align: center;">Edit Product</h3>
 
         <div class="row">
@@ -73,8 +74,8 @@ function createSection()
         <div class=" row">
             <div class="six columns">
                 <label for="parent">Image URL</label>
-                <input type="text" name="imageURL" placeholder="Image URL" class="u-full-width"
-                    value="<?php echo $product->getImageURL(); ?>">
+                <input type="file" name="imageURL" placeholder="Image URL" class="u-full-width"
+                    accept="image/png,image/jpg,image/jpeg">
             </div>
             <div class=" six columns">
                 <label for="name">Category</label>

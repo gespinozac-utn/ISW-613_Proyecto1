@@ -29,7 +29,7 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
             <?php require_once('header.php'); ?>
 
             <section>
-                <form action="/CRUDProducts.php?action=add" method="POST">
+                <form action="/CRUDProducts.php?action=add" method="POST" enctype="multipart/form-data">
                     <h3 style="text-align: center;">Create Product</h3>
 
                     <div class="row">
@@ -45,7 +45,8 @@ if (empty($_SESSION['user']) || $_SESSION['user']->get_role() != 'Administrador'
                     <div class="row">
                         <div class="six columns">
                             <label for="parent">Image URL</label>
-                            <input type="text" name="imageURL" placeholder="Image URL" class="u-full-width">
+                            <input type="file" name="imageURL" placeholder="Image URL" class="u-full-width"
+                                accept="image/png,image/jpg,image/jpeg">
                         </div>
                         <div class="six columns">
                             <label for="name">Category</label>

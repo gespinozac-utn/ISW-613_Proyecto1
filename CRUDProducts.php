@@ -32,6 +32,20 @@ if ($_GET) {
     header('location:/index.php');
 }
 
+function newImage()
+{
+    $target_dir = 'uploads/';
+    $target_temp = $_FILES['imageURL']['tmp_name'];
+    $targe_name = basename($_FILES['imageURL']['name']);
+    $target_file = $target_dir . $targe_name;
+    if (!empty($targe_name)) {
+        move_uploaded_file($target_temp, $target_file);
+        return $target_file;
+    } else {
+        return '';
+    }
+}
+
 function addNewProduct()
 {
     if (!emptyFields()) {
@@ -39,7 +53,7 @@ function addNewProduct()
             $_REQUEST['sku'],
             $_REQUEST['name'],
             $_REQUEST['description'],
-            $_REQUEST['imageURL'],
+            newImage(),
             $_REQUEST['category'],
             $_REQUEST['stock'],
             $_REQUEST['price']
@@ -54,6 +68,20 @@ function addNewProduct()
     }
 }
 
+function getImageUrl($product)
+{
+    $target_dir = 'uploads/';
+    $target_temp = $_FILES['imageURL']['tmp_name'];
+    $targe_name = basename($_FILES['imageURL']['name']);
+    $target_file = $target_dir . $targe_name;
+    if (!empty($targe_name)) {
+        move_uploaded_file($target_temp, $target_file);
+        return  $target_file;
+    } else {
+        return $product->getImageURL();
+    }
+}
+
 function editProduct()
 {
     if (!emptyFields()) {
@@ -61,7 +89,7 @@ function editProduct()
         $product->setSKU($_REQUEST['sku']);
         $product->setName($_REQUEST['name']);
         $product->setDescription($_REQUEST['description']);
-        $product->setImageURL($_REQUEST['imageURL']);
+        $product->setImageURL(getImageUrl($product));
         $product->setIDCategory($_REQUEST['category']);
         $product->setStock($_REQUEST['stock']);
         $product->setPrice($_REQUEST['price']);
