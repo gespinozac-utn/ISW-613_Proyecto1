@@ -16,7 +16,10 @@ require('style.php');
                 <a href="/product.php" title="Product"><i class="fas fa-box-open fa-2x"></i></a>
                 <?php } else { ?>
                 <!-- Menu Cliente -->
-                <a href="#" title="Checkout" class="u-pull-right"><i class="fas fa-shopping-basket fa-2x"></i></a>
+                <a href="/catalogue.php" title="Catalogue"><i class="fas fa-book-open fa-2x"></i></a>
+                <a href="/orders.php" title="Orders"><i class="fas fa-inbox fa-2x"></i></a>
+                <a href="/checkout.php" title="Checkout" class="u-pull-right"><i
+                        class="fas fa-shopping-basket fa-2x"></i></a>
                 <?php } ?>
             </nav>
         </div>

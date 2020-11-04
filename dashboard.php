@@ -1,12 +1,11 @@
 <?php
 require_once('classUser.php');
 session_start();
-$user = $_SESSION['user'];
-
 if (empty($_SESSION['user'])) {
     echo "<h1 style='color: red;'>Unauthorized Access.</h1>";
     die;
 }
+$user = $_SESSION['user'];
 ?>
 
 <!DOCTYPE html>
