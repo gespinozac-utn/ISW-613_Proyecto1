@@ -7,7 +7,7 @@ require_once('classUser.php');
 
 function createCatalogue($idCategory)
 {
-    foreach (getAllProducts($idCategory) as $prod) {
+    foreach (filterByCategory($idCategory) as $prod) {
         createProductCard($prod);
     }
 }
@@ -30,13 +30,28 @@ function createProductCard($product)
 
 function createSideMenu($idPa = null)
 {
-    $idPa = !empty($idPa) ? $idPa : '---';
-    // Parent categories.
-    $parents = searchCategories($idPa);
-    foreach ($parents as $cat) {
-        createListItem($cat);
-    }
-    if (count($parents) === 1) {
+    if (empty($idPa)) {
+        $idPa = !empty($idPa) ? $idPa : '---';
+        foreach (searchCategories($idPa) as $cat) {
+            createListItem($cat);
+        }
+    } else {
+        // Create Parent label
+        $parent = categoryById($idPa);
+        $prevParent = categoryByName(new Category($parent->get_parent()));
+        if ($prevParent) {
+            createListItem($prevParent);
+        }
+        createListItem($parent);
+
+        //create children categories
+        $childs = getAllChild($idPa);
+        if (!empty($childs)) {
+            echo '<span><strong>SubCategory</strong></span>';
+            foreach ($childs as $child) {
+                createListItem($child);
+            }
+        }
     }
 }
 

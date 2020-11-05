@@ -254,7 +254,7 @@ function filterByCategory($idCategory = null)
             FROM product AS p
                 INNER JOIN category AS c ON (p.idCategory = c.id)
                 INNER JOIN category AS pa ON (p.idCategory = pa.id OR c.parent = pa.name) ";
-    !empty($idCategory) ? $sql . "WHERE c.id = '" . $idCategory . "' OR pa.id = '" . $idCategory . "';" : $sql . ";";
+    !empty($idCategory) ? $sql .= "WHERE c.id = '" . $idCategory . "' OR pa.id = '"  . $idCategory . "';" : $sql .= ";";
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();

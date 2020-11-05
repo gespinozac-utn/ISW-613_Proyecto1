@@ -83,7 +83,7 @@ $user = $_SESSION['user'];
                         <li>
                             <a href="/catalogue.php">All</a>
                         </li>
-                        <?php createSideMenu(); ?>
+                        <?php createSideMenu($_GET && !empty($_REQUEST['id']) ? $_REQUEST['id'] : null); ?>
                     </ul>
                 </div>
 
