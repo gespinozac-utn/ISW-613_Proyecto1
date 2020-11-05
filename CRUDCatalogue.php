@@ -42,7 +42,7 @@ function createSideMenu($idPa = null)
         if ($prevParent) {
             createListItem($prevParent);
         }
-        createListItem($parent);
+        createListItem($parent, true);
 
         //create children categories
         $childs = getAllChild($idPa);
@@ -55,21 +55,12 @@ function createSideMenu($idPa = null)
     }
 }
 
-function createListItem($category)
+function createListItem($category, $active = false)
 {
+    $name = $active ? '<strong> > </strong>' . $category->get_name() : $category->get_name();
     echo '
     <li>
-        <a href="/catalogue.php?id=' . $category->get_id() . '">' . $category->get_name() . '</a>
+        <a href="/catalogue.php?id=' . $category->get_id() . '">' . $name . '</a>
     </li>
     ';
 }
-
-// <li>
-//  <a href="#">All</a>
-// </li>
-
-// {{{ SUBCATEGORY SECTION }}}
-// <span><strong>SubCategory</strong></span>
-// <li>
-//  <a href="#">Ropa de hombres</a>
-// </li>
