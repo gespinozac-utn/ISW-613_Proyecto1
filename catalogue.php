@@ -88,7 +88,17 @@ $user = $_SESSION['user'];
                 </div>
 
                 <div class="content">
-                    <?php createCatalogue($_GET && !empty($_REQUEST['id']) ? $_REQUEST['id'] : null); ?>
+                    <?php
+                if ($_GET) {
+                    if (empty($_REQUEST['preview'])) {
+                        createCatalogue(!empty($_REQUEST['id']) ? $_REQUEST['id'] : null);
+                    } else {
+                        previewProduct($_REQUEST['preview']);
+                    }
+                } else {
+                    createCatalogue(null);
+                }
+                ?>
                 </div>
 
             </section>

@@ -16,7 +16,7 @@ function createProductCard($product)
 {
     echo '
     <div class="product-card">
-        <a href="#">
+        <a href="/catalogue.php?preview=' . $product->getId() . '">
             <div class="product-image">
                 <img src="' . $product->getImageURL() . '">
             </div>
@@ -62,5 +62,43 @@ function createListItem($category, $active = false)
     <li>
         <a href="/catalogue.php?id=' . $category->get_id() . '">' . $name . '</a>
     </li>
+    ';
+}
+
+function previewProduct($idProd)
+{
+    $product = productById($idProd);
+    echo '
+    <div class="row u-full-width">
+        <div class="three columns u-full-width"> &nbsp;</div>
+        <div class="nine columns">
+            <h2>' . $product->getName() . '</h2>
+        </div>
+    </div>
+
+    <div class="row u-full-width">
+        <div class="one column">&nbsp;</div>
+        <div class="four columns">
+            <img src="' . $product->getImageURL() . '" style="height:200px;width:200px;">
+        </div>
+        <div class="seven columns">
+            <p>' . $product->getDescription() . '</p>
+        </div>
+    </div>
+
+    <div class="row u-full-width">
+        <div class="four columns u-full width">
+            <h4><strong>Price:</strong>&#8353; ' . $product->getPrice() . '</h4>
+        </div>
+        <div class="six columns u-full width">
+            <h5 class="u-pull-right"><strong>Stock:</strong> ' . $product->getStock() . '</h5>
+        </div>
+    </div>
+    
+    <div class="row u-full-width">
+        <div class="eleven columns u-full width">
+            <a href="#" class="button button-primary u-pull-right">Add</a>
+        </div>
+    </div>
     ';
 }
