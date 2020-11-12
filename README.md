@@ -38,7 +38,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
     - [X] Un usuario deberá registrarse para poder realizar compras. Un registro de cliente
     consiste en los siguientes datos:
         - [X] Nombre, Apellidos, Número de Teléfono, Correo Electrónico, Dirección, contraseña
-    - [ ] El usuario podrá ingresar al catálogo de productos. El catálogo listará todas las categorías y al darle click a la categoría mostrará las sub-categorías y los productos asociados a la categoría.
+    - [X] El usuario podrá ingresar al catálogo de productos. El catálogo listará todas las categorías y al darle click a la categoría mostrará las sub-categorías y los productos asociados a la categoría.
     - [ ] Al darle click a un producto la aplicación mostrará el detalle del producto. Nombre, descripción, sku,imagen y un botón para agregar al carrito de compras.
     - [ ] Los clientes pueden agregar artículos a su carrito de compras.
     - [ ] Es posible ver el contenido del carrito de compras en cualquier momento para lo cual se mostrará un botón con el carrito en algún lugar para que esté siempre visible.
