@@ -102,9 +102,17 @@ function previewProduct($idProd)
     </div>
     
     <div class="row u-full-width">
-        <div class="eleven columns u-full width">
-            <a href="#" class="button button-primary u-pull-right">Add</a>
-        </div>
+        <form action="#?id=' . $product->getId() . '">
+            <div class="nine columns">
+                <input type="number" name="quantity" class="u-pull-right" value="1" min="1" max="' . $product->getStock() . '" require>
+            </div>
+            <div class="one columns">
+                &nbsp;
+            </div>
+            <div class="two colmuns">
+                <input type="submit" value="Add"  class="button button-primary">
+            </div>
+        </form>
     </div>
     ';
 }
