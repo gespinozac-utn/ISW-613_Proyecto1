@@ -86,6 +86,12 @@ function previewProduct($idProd)
         </div>
     </div>
 
+    <div class="row u-wull-width">
+        <div class="twelve columns u-full-width">
+            <h5><strong>' . $product->getSKU() . '</strong></h5>
+        </div>
+    </div>
+
     <div class="row u-full-width">
         <div class="four columns u-full width">
             <h4><strong>Price:</strong>&#8353; ' . $product->getPrice() . '</h4>
