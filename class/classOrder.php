@@ -1,9 +1,11 @@
 <?php
 
-
-/**
+/** Order Class
  * 
- * @property
+ * @property INTEGER $id unique number
+ * @property DATETIME $purchaseDate date of purcharse
+ * @property INTEGER $idUser id of user who made the purchase
+ * @property BOOLEAN $status status of the order, false(0) if is pre-oder, true(1) if is complete.
  * 
  * @author Gustavo Espinoza
  * @version 1.0
@@ -25,7 +27,7 @@ class Order
      * @property INTEGER $idUser id of user who made the purchase
      * @property BOOLEAN $status status of the order, false(0) if is pre-oder, true(1) if is complete.
      */
-    public function __construct($idUser, $purchaseDate, $status, $id)
+    public function __construct($idUser = null, $purchaseDate = null, $status = null, $id = null)
     {
         $this->id = $id;
         $this->purchaseDate = $purchaseDate;
@@ -72,12 +74,12 @@ class Order
     /** Get ID
      * @return INTEGER id for order
      */
-    public function getID()
+    public function getId()
     {
         return $this->id;
     }
 
-    /** Get 
+    /** Get purchaseDate
      * @return DATETIME date of purchase
      */
     public function getPurchaseDate()
@@ -85,7 +87,7 @@ class Order
         return $this->purchaseDate;
     }
 
-    /** Get 
+    /** Get idUser
      * @return INTEGER id of the user from the purchase
      */
     public function getIdUser()
@@ -93,7 +95,7 @@ class Order
         return $this->idUser;
     }
 
-    /** Get 
+    /** Get status
      * @return BOOLEAN status of the purchase, return false(0) if is pre-order, true(1) if is complete
      */
     public function getStatus()
