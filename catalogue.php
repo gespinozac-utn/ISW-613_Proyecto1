@@ -1,6 +1,6 @@
 <?php
-require_once('classUser.php');
-require_once('CRUDCatalogue.php');
+require_once('class/classUser.php');
+require_once('CRUD/CRUDCatalogue.php');
 session_start();
 if (empty($_SESSION['user'])) {
     echo "<h1 style='color: red;'>Unauthorized Access.</h1>";
@@ -12,9 +12,9 @@ $user = $_SESSION['user'];
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <link rel="shortcut icon" href="https://www.utn.ac.cr/misc/favicon.ico" type="image/vnd.microsoft.icon" />
-        <style>
+<head>
+    <link rel="shortcut icon" href="https://www.utn.ac.cr/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+    <style>
         .side-menu {
             width: 16%;
             position: absolute;
@@ -69,26 +69,26 @@ $user = $_SESSION['user'];
         .product-info>h5 {
             margin-bottom: 1rem;
         }
-        </style>
-    </head>
+    </style>
+</head>
 
-    <body>
-        <div class="container">
-            <?php require('header.php'); ?>
-            <section class="catalogue">
+<body>
+    <div class="container">
+        <?php require('header.php'); ?>
+        <section class="catalogue">
 
-                <div class="side-menu">
-                    <ul>
-                        <span><strong>Category</strong></span>
-                        <li>
-                            <a href="/catalogue.php">All</a>
-                        </li>
-                        <?php createSideMenu($_GET && !empty($_REQUEST['id']) ? $_REQUEST['id'] : null); ?>
-                    </ul>
-                </div>
+            <div class="side-menu">
+                <ul>
+                    <span><strong>Category</strong></span>
+                    <li>
+                        <a href="/catalogue.php">All</a>
+                    </li>
+                    <?php createSideMenu($_GET && !empty($_REQUEST['id']) ? $_REQUEST['id'] : null); ?>
+                </ul>
+            </div>
 
-                <div class="content">
-                    <?php
+            <div class="content">
+                <?php
                 if ($_GET) {
                     if (empty($_REQUEST['preview'])) {
                         createCatalogue(!empty($_REQUEST['id']) ? $_REQUEST['id'] : null);
@@ -99,10 +99,10 @@ $user = $_SESSION['user'];
                     createCatalogue(null);
                 }
                 ?>
-                </div>
+            </div>
 
-            </section>
-        </div>
-    </body>
+        </section>
+    </div>
+</body>
 
 </html>

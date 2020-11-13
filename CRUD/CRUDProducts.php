@@ -1,7 +1,7 @@
 <?php
-require_once('functionsProduct.php');
-require_once('classProduct.php');
-require_once('classUser.php');
+require_once('../functions/functionsProduct.php');
+require_once(__DIR__ . '/../class/classProduct.php');
+require_once(__DIR__ . '/../class/classUser.php');
 
 session_start();
 $user = empty($_SESSION) ? null : $_SESSION['user'];
@@ -39,7 +39,8 @@ function newImage()
     $targe_name = basename($_FILES['imageURL']['name']);
     $target_file = $target_dir . $targe_name;
     if (!empty($targe_name)) {
-        move_uploaded_file($target_temp, $target_file);
+        $directory = __DIR__ . '/../' . $target_file;
+        move_uploaded_file($target_temp, $directory);
         return $target_file;
     } else {
         return null;
@@ -75,7 +76,8 @@ function getImageUrl($product)
     $targe_name = basename($_FILES['imageURL']['name']);
     $target_file = $target_dir . $targe_name;
     if (!empty($targe_name)) {
-        move_uploaded_file($target_temp, $target_file);
+        $directory = __DIR__ . '/../' . $target_file;
+        move_uploaded_file($target_temp, $directory);
         return  $target_file;
     } else {
         return $product->getImageURL();

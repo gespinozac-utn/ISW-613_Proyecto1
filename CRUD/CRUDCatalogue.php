@@ -1,9 +1,9 @@
 <?php
-require_once('functionsProduct.php');
-require_once('classProduct.php');
-require_once('functionsCategory.php');
-require_once('classCategory.php');
-require_once('classUser.php');
+require_once('functions/functionsProduct.php');
+require_once(__DIR__ . '/../class/classProduct.php');
+require_once('functions/functionsCategory.php');
+require_once(__DIR__ . '/../class/classCategory.php');
+require_once(__DIR__ . '/../class/classUser.php');
 
 function createCatalogue($idCategory)
 {

@@ -1,7 +1,7 @@
 <?php
 
-require_once('functionsClient.php');
-require_once('functionsUser.php');
+require_once(__DIR__ . '/../functions/functionsClient.php');
+require_once(__DIR__ . '/../functions/functionsUser.php');
 
 if ($_POST && !empty($_REQUEST['action'])) {
     switch ($_REQUEST['action']) {

@@ -1,7 +1,7 @@
 <?php
 
-require_once('sqlConnection.php');
-require_once('classProduct.php');
+require_once(__DIR__ . '/../sqlConnection.php');
+require_once(__DIR__ . '/../class/classProduct.php');
 
 function productById($id)
 {

@@ -1,6 +1,6 @@
 <?php
-require_once('sqlConnection.php');
-require_once('classClient.php');
+require_once(__DIR__ . '/../sqlConnection.php');
+require_once(__DIR__ . '/../class/classClient.php');
 
 function addClient($client)
 {

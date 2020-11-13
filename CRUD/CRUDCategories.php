@@ -1,7 +1,7 @@
 <?php
-require_once('functionsCategory.php');
-require_once('classCategory.php');
-require_once('classUser.php');
+require_once(__DIR__ . '/../functions/functionsCategory.php');
+require_once(__DIR__ . '/../class/classCategory.php');
+require_once(__DIR__ . '/../class/classUser.php');
 
 session_start();
 $user = empty($_SESSION) ? null : $_SESSION['user'];
@@ -38,7 +38,7 @@ if ($_GET) {
 
 function validateDelete()
 {
-    include_once('functionsProduct.php');
+    include_once(__DIR__ . '/../functions/functionsProduct.php');
     $category = categoryById($_REQUEST['id']);
 
     if (!(count(getAllChild($category->get_id())) > 0)) {

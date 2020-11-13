@@ -1,7 +1,7 @@
 <?php
-require_once('functionsProduct.php');
-require_once('classProduct.php');
-require_once('classUser.php');
+require_once('functions/functionsProduct.php');
+require_once('class/classProduct.php');
+require_once('class/classUser.php');
 
 session_start();
 
@@ -40,7 +40,7 @@ $user = $_SESSION['user'];
 
 function loadComboBox($product)
 {
-    include_once('functionsCategory.php');
+    include_once('functions/functionsCategory.php');
     foreach (searchCategories() as $category) { ?>
 <option value="<?php echo $category->get_id(); ?>"
     <?php echo ($product->getIdCategory() === $category->get_id()) ? 'selected' : '' ?>>
@@ -55,7 +55,7 @@ function createSection()
     $message = "";
     ?>
 <section>
-    <form action="/CRUDProducts.php?action=edit&id=<?php echo $product->getId(); ?>" method="POST"
+    <form action="/CRUD/CRUDProducts.php?action=edit&id=<?php echo $product->getId(); ?>" method="POST"
         enctype="multipart/form-data">
         <h3 style="text-align: center;">Edit Product</h3>
 
