@@ -5,8 +5,6 @@ require_once('class/classUser.php');
 
 session_start();
 
-$message;
-
 if (empty($_SESSION['user'])) {
     header('location:/index.php');
 }
@@ -52,7 +50,6 @@ function loadComboBox($product)
 function createSection()
 {
     $product = productById($_REQUEST['id']);
-    $message = "";
     ?>
 <section>
     <form action="/CRUD/CRUDProducts.php?action=edit&id=<?php echo $product->getId(); ?>" method="POST"
@@ -105,7 +102,7 @@ function createSection()
                     required><?php echo $product->getDescription(); ?></textarea>
             </div>
         </div>
-        <h6><?php echo $message; ?></h6>
+        <h6 style="margin: 0;padding: 0;"><?php echo  !empty($_REQUEST['message']) ? $_REQUEST['message'] : ''; ?></h6>
         <div class=" row">
             <input type="submit" value="Save" class="button-primary u-pull-right">
         </div>

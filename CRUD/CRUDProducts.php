@@ -97,11 +97,11 @@ function editProduct()
         $product->setPrice($_REQUEST['price']);
         if (updateProduct($product)) {
             header('location:/product.php');
-        } else {
-            $header = 'editProduct.php?id=' . $product->getId();
-            header('location:/' . $header);
+            exit();
         }
     }
+    $header = 'editProduct.php?id=' . $_REQUEST['id'] . '&message=Empty fields.';
+    header('location:/' . $header);
 }
 
 function emptyFields()

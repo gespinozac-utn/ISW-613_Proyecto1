@@ -30,7 +30,7 @@ function productById($id)
 function getAllProductsByCategory($idCategory)
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM product WHERE idCategory = " . $idCategory;
+    $sql = "SELECT * FROM product WHERE idCategory = " . $idCategory . " AND `stock` > 0";
     $products = [];
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
@@ -64,6 +64,7 @@ function getAllProducts($idCategory = null)
     if (!empty($idCategory)) {
         $sql .= "WHERE idCategory = " . $idCategory;
     }
+    $sql .= " AND `stock` > 0";
     $products = [];
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
@@ -254,7 +255,8 @@ function filterByCategory($idCategory = null)
             FROM product AS p
                 INNER JOIN category AS c ON (p.idCategory = c.id)
                 INNER JOIN category AS pa ON (p.idCategory = pa.id OR c.parent = pa.name) ";
-    !empty($idCategory) ? $sql .= "WHERE c.id = '" . $idCategory . "' OR pa.id = '"  . $idCategory . "';" : $sql .= ";";
+    !empty($idCategory) ? $sql .= "WHERE c.id = '" . $idCategory . "' OR pa.id = '"  . $idCategory . "'" : $sql;
+    $sql .= " AND p.`stock` > 0;";
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
         $conn->close();

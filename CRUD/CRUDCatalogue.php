@@ -1,7 +1,7 @@
 <?php
-require_once('functions/functionsProduct.php');
+require_once(__DIR__ . '/../functions/functionsProduct.php');
 require_once(__DIR__ . '/../class/classProduct.php');
-require_once('functions/functionsCategory.php');
+require_once(__DIR__ . '/../functions/functionsCategory.php');
 require_once(__DIR__ . '/../class/classCategory.php');
 require_once(__DIR__ . '/../class/classUser.php');
 
@@ -102,7 +102,7 @@ function previewProduct($idProd)
     </div>
     
     <div class="row u-full-width">
-        <form action="#?id=' . $product->getId() . '">
+        <form action="checkout.php?id=' . $product->getId() . '">
             <div class="nine columns">
                 <input type="number" name="quantity" class="u-pull-right" value="1" min="1" max="' . $product->getStock() . '" require>
             </div>
