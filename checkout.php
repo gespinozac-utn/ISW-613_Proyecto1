@@ -1,6 +1,7 @@
 <?php
 require_once('class/classUser.php');
 require_once('CRUD/CRUDBill.php');
+require_once('CRUD/CRUDBill.php');
 session_start();
 if (empty($_SESSION['user'])) {
     echo "<h1 style='color: red;'>Unauthorized Access.</h1>";
@@ -104,15 +105,19 @@ $user = $_SESSION['user'];
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>leather jacket</td>
-                                    <td>1</td>
-                                    <td><a href="/CRUD/CRUDBill.php?id=X"><i class="far fa-trash-alt fa-lg"></a></i>
-                                    </td>
-                                </tr>
+                                <!-- Load orders -->
+                                <?php loadOrders($_SESSION['user']->get_id()); ?>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <form action="/CRUDBill.php?action=checkout&id=<?echo $_SESSION['user']->get_id();?>">
+                                    <input type="submit" value="Checkout" class="button u-full-width">
+                                </form>
+                            </div>
+                        </div>
                     </div>
+
                 </section>
 
             </section>

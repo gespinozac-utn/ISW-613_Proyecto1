@@ -11,7 +11,8 @@ function preOrder($idUser)
     $order = new Order($idUser);
 
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('i', $order->getIdUser());
+        $idUser = $order->getIdUser();
+        $stmt->bind_param('i', $idUser);
         $result = $stmt->execute();
         $order->setId(mysqli_insert_id($conn));
     } else {
@@ -93,4 +94,58 @@ function getOrderById($id)
         $result['id']
     );
     return (!empty($result['id']) ? $newOrder : false);
+}
+
+function getDetails($order)
+{
+    $id = $order->getId();
+    $conn = getConnection();
+    $details = [];
+    $sql = "SELECT * FROM `detail` WHERE `idOrder`=$id;";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        echo $conn->connect_error;
+        die;
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newDetail = new Detail(
+                $row['idOrder'],
+                $row['idProduct'],
+                $row['quantity'],
+                $row['id']
+            );
+            array_push($details, $newDetail);
+        }
+    } else {
+        return false;
+    }
+    return $details;
+}
+
+function getPreOderByUser($idUser)
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM `order` WHERE `idUser`=$idUser AND `status`=0;";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        echo $conn->connect_error;
+        die;
+    }
+    $conn->close();
+
+    if (mysqli_num_rows($result) == 1) {
+        $result = $result->fetch_assoc();
+        return new Order(
+            $result['idUser'],
+            $result['purchaseDate'],
+            $result['status'],
+            $result['id']
+        );
+    } else {
+        return preOrder($idUser);
+    }
 }

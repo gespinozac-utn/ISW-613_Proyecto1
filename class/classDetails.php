@@ -26,7 +26,7 @@ class Detail
      * @param INTEGER $idProduct id of the product
      * @param INTEGER $quantity how many product the user buy
      */
-    public function __construct($id = null, $idOrder = null, $idProduct = null, $quantity = null)
+    public function __construct($idOrder = null, $idProduct = null, $quantity = null, $id = null)
     {
         $this->id = $id;
         $this->idOrder = $idOrder;
