@@ -25,7 +25,7 @@ function createData($detail)
     <tr>
         <td>' . $name . '</td>
         <td>' . $quantity . '</td>
-        <td><a href="/CRUD/CRUDBill.php?action=delete&id=' . $id . '"><i class="far fa-trash-alt fa-lg"></a></i>
+        <td><a href="/CRUD/CRUDBill.php?action=delete&id=' . $id . '"><i class="fas fa-times fa-lg"></i></a>
         </td>
     </tr>
     ';
