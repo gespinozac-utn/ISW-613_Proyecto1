@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../sqlConnection.php');
-require_once('class/classUser.php');
+require_once(__DIR__ . '/../class/classUser.php');
 
 function validateUser($user)
 {

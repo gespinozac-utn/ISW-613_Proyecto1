@@ -27,7 +27,7 @@ class Client
      * 
      * @property INTEGER $id unique number
      * @property INTEGER $idUsuario Unique number of user
-     * @property String $name Name
+     * @property String $name Name of the client
      * @property String $email Email Adress
      * @property String $phone phone number
      * @property String $Address Adress
