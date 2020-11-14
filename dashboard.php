@@ -50,14 +50,14 @@ $user = $_SESSION['user'];
                 case 'Cliente':
                 default:
                     $totalProductos = totalProducts($user->get_id());
-                    $totalMonto = 0; ?>
+                    $totalMonto = totalComprado($user->get_id()); ?>
                 <!-- Client dashboard -->
                 <div class="row">
                     <div class="six columns">
                         <h5>Total de productos: <?php echo $totalProductos; ?></h5>
                     </div>
                     <div class="six columns">
-                        <h5>Monto total: <?php echo $totalMonto; ?></h5>
+                        <h5>Monto total de compras: <?php echo $totalMonto; ?></h5>
                     </div>
                 </div>
                 <?php break;

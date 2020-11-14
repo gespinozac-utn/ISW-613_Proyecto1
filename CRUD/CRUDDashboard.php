@@ -40,3 +40,8 @@ function totalProfit()
     }
     return $total;
 }
+
+function totalComprado($idUser)
+{
+    return count(getOrders($idUser));
+}

@@ -45,7 +45,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
     - [X] Al darle click al carrito de compras se mostrará el detalle del carrito de manera que el usuario podrá eliminar elementos del carrito o proceder a la compra.
     - [X] Como pantalla de inicio después de autenticarse el usuario podrá ver una pantalla inicial de estadísticas:
         - [X] Total de productos adquiridos por el cliente
-        - [ ] Monto total de compras realizadas por el cliente
+        - [X] Monto total de compras realizadas por el cliente
     - [X] Cuando el usuario hace “checkout”, el sistema debe generar una orden con los artículos del carrito de compras. A cada artículo comprado deberá disminuir la disponibilidad en stock.
     - [ ] El cliente tendrá acceso a una sección donde puede ver todas las compras realizadas. En un listado se mostrará la fecha, y el monto total de cada compra, al darle click en Ver Orden se mostrará el detalle de la orden esto incluye los siguientes datos:
         - [ ] Fecha de Compra
