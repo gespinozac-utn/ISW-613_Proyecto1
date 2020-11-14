@@ -34,7 +34,7 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
             - [X] Editar un producto.
             - [X] Eliminar productos.
     - [X] *Cerrar sessión*
-- [ ] **Perspectiva de Cliente**
+- [X] **Perspectiva de Cliente**
     - [X] Un usuario deberá registrarse para poder realizar compras. Un registro de cliente
     consiste en los siguientes datos:
         - [X] Nombre, Apellidos, Número de Teléfono, Correo Electrónico, Dirección, contraseña
@@ -47,12 +47,12 @@ La aplicación debe cumplir con los siguientes requerimietos funcionales:
         - [X] Total de productos adquiridos por el cliente
         - [X] Monto total de compras realizadas por el cliente
     - [X] Cuando el usuario hace “checkout”, el sistema debe generar una orden con los artículos del carrito de compras. A cada artículo comprado deberá disminuir la disponibilidad en stock.
-    - [ ] El cliente tendrá acceso a una sección donde puede ver todas las compras realizadas. En un listado se mostrará la fecha, y el monto total de cada compra, al darle click en Ver Orden se mostrará el detalle de la orden esto incluye los siguientes datos:
-        - [ ] Fecha de Compra
+    - [x] El cliente tendrá acceso a una sección donde puede ver todas las compras realizadas. En un listado se mostrará la fecha, y el monto total de cada compra, al darle click en Ver Orden se mostrará el detalle de la orden esto incluye los siguientes datos:
+        - [x] Fecha de Compra
         - [X] Total de la Orden
-        - [ ] Items
-            - [ ] Cantidad
-            - [ ] Descripción
-            - [ ] Precio
+        - [x] Items
+            - [x] Cantidad
+            - [X] Descripción
+            - [X] Precio
 - [X] ***Cronjob (php script)***
     - [X] Desarrollar un script que busque los productos con cierto nivel de stock y que el mismo envíe un correo electrónico al administrador con el asunto “Productos con bajo stock”, en el contenido del correo indicar el SKU de los productos con bajo stock. El script recibirá como parámetro el stock mínimo a consultar, de manera que si al ejecutar el script se envía como parámetro el número 3, entonces el script identificara y reportará aquellos productos cuyo stock es menor o igual a 3. 

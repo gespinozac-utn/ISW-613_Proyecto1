@@ -7,6 +7,7 @@ require_once(__DIR__ . '/../functions/functionsBill.php');
 
 function createDeatils($idOrder)
 {
+    echo "<ol>";
     if (!empty($idOrder)) {
         $order = getOrderById($idOrder);
         $details = getDetails($order);
@@ -15,7 +16,8 @@ function createDeatils($idOrder)
             createDetailData($detail);
             $total += getTotal($detail);
         }
-        echo "<p><strong>Total: </strong>&#8353;$total</p>";
+        echo "</ol>
+        <p><strong>Total: </strong>&#8353;$total</p>";
     }
 }
 
@@ -25,10 +27,15 @@ function createDetailData($detail)
     $product = productById($detail->getIdProduct());
     $productName = $product->getName();
     $productPrice = $product->getPrice();
+    $productDescription = $product->getDescription();
     echo "
-    <ul>
-        <li>$productName -- &#8353;$productPrice <strong>x</strong>$quantity</li>
-    </ul>";
+    <li> $productName
+        <ul>
+            <li>Quantity: $quantity</li>
+            <li>Description: $productDescription</li>
+            <li>Price: &#8353;$productPrice</li>
+        </ul>
+    </li>";
 }
 
 function createOrders($idUser)
