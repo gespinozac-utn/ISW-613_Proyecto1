@@ -149,3 +149,62 @@ function getPreOderByUser($idUser)
         return preOrder($idUser);
     }
 }
+
+function deleteDetail($id)
+{
+    $conn = getConnection();
+    $sql = "DELETE FROM `detail` WHERE `id`=$id;";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        echo $conn->connect_error;
+        die;
+    }
+    $conn->close();
+    return $result;
+}
+
+function getDetailById($id)
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM `detail` WHERE `id` = $id;";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+    $conn->close();
+    $result = $result->fetch_array();
+    $newDetail = new Detail(
+        $result['idOrder'],
+        $result['idProduct'],
+        $result['quantity'],
+        $result['id']
+    );
+    return (!empty($result['id']) ? $newDetail : false);
+}
+
+function addDetail($detail)
+{
+    $conn = getConnection();
+    $sql = 'INSERT INTO `detail`(`idOrder`,`idProduct`,`quantity`) VALUES(?,?,?);';
+    if ($stmt = $conn->prepare($sql)) {
+        $idOrder = $detail->getIdOrder();
+        $idProduct = $detail->getIdProduct();
+        $quantity = $detail->getQuantity();
+        $stmt->bind_param('iii', $idOrder, $idProduct, $quantity);
+        $result = $stmt->execute();
+        $detail = getDetailById(mysqli_insert_id($conn));
+    } else {
+        $error = $conn->errno . ' ' . $conn->error;
+        $stmt->close();
+        echo $error;
+    }
+    $conn->close();
+
+    if ($result && !empty($detail->getId())) {
+        return $detail;
+    } else {
+        return false;
+    }
+}

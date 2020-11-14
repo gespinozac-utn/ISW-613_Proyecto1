@@ -1,6 +1,6 @@
 <?php
+
 require_once('class/classUser.php');
-require_once('CRUD/CRUDBill.php');
 require_once('CRUD/CRUDBill.php');
 session_start();
 if (empty($_SESSION['user'])) {

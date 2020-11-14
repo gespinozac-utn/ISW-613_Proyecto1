@@ -102,7 +102,7 @@ function previewProduct($idProd)
     </div>
     
     <div class="row u-full-width">
-        <form action="checkout.php?id=' . $product->getId() . '">
+        <form action="/CRUD/CRUDBill.php?action=add&idUser=' . $_SESSION['user']->get_id() . '&idP=' . $product->getId() . '" method=POST>
             <div class="nine columns">
                 <input type="number" name="quantity" class="u-pull-right" value="1" min="1" max="' . $product->getStock() . '" require>
             </div>
