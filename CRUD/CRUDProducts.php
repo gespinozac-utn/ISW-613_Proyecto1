@@ -1,5 +1,5 @@
 <?php
-require_once('../functions/functionsProduct.php');
+require_once(__DIR__ . '/../functions/functionsProduct.php');
 require_once(__DIR__ . '/../class/classProduct.php');
 require_once(__DIR__ . '/../class/classUser.php');
 

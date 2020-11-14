@@ -111,7 +111,8 @@ $user = $_SESSION['user'];
                         </table>
                         <div class="row">
                             <div class="twelve columns">
-                                <form action="/CRUDBill.php?action=checkout&id=<?echo $_SESSION['user']->get_id();?>">
+                                <form action="/CRUD/CRUDBill.php?action=checkout" method="POST">
+                                    <input type="hidden" name="idU" value="<?php echo $user->get_id(); ?>">
                                     <input type="submit" value="Checkout" class="button u-full-width">
                                 </form>
                             </div>

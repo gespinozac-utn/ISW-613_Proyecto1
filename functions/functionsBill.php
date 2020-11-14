@@ -208,3 +208,59 @@ function addDetail($detail)
         return false;
     }
 }
+
+function getOrders($idUser = null)
+{
+    $conn = getConnection();
+    $orders = [];
+    $sql = "SELECT * FROM `order` WHERE `status`=1";
+    $sql .= !empty($idUser) ? " AND `idUser`=$idUser;" : ";";
+    $result = $conn->query($sql);
+    if ($conn->connect_errno) {
+        $conn->close();
+        echo $conn->connect_error;
+        die;
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newOrder = new Order(
+                $row['idUser'],
+                $row['purchaseDate'],
+                $row['status'],
+                $row['id']
+            );
+            array_push($orders, $newOrder);
+        }
+    } else {
+        return false;
+    }
+    return $orders;
+}
+
+function getAllDetails()
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM `detail`;";
+    $result = $conn->query($sql);
+    $details = [];
+    if ($conn->connect_errno) {
+        $conn->close();
+        echo $conn->connect_error;
+        die;
+    }
+    $conn->close();
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $newDetail = new Detail(
+                $row['idOrder'],
+                $row['idProduct'],
+                $row['quantity'],
+                $row['id']
+            );
+            array_push($details, $newDetail);
+        }
+    }
+    return $details;
+}

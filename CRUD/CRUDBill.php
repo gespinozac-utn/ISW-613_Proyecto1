@@ -13,6 +13,7 @@ if ($_GET) {
                     addNewDetail();
                     break;
                 case 'checkout':
+                    checkoutOrder();
                     break;
             }
         } else if ($_REQUEST['action'] === 'delete' && !empty($_REQUEST['id'])) {
@@ -22,6 +23,26 @@ if ($_GET) {
         }
     } else {
         header('location:/index.php');
+    }
+}
+
+function checkoutOrder()
+{
+    require_once(__DIR__ . '/../functions/functionsUser.php');
+    $user = userById($_REQUEST['idU']);
+    $preOrder = getPreOderByUser($user->get_id());
+    $details = getDetails($preOrder);
+    if (!empty($details)) {
+        foreach ($details as $detail) {
+            $product = productById($detail->getIdProduct());
+            $updatedStock = $product->getStock() - $detail->getquantity();
+            $product->setStock($updatedStock);
+            updateProduct($product);
+        }
+        preOrderCheckout($preOrder);
+        header('location:/orders.php');
+    } else {
+        header('location:/catalogue.php');
     }
 }
 

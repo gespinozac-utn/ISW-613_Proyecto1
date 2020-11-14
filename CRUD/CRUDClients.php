@@ -57,8 +57,3 @@ function comparePassword()
 {
     return ($_REQUEST['password'] === $_REQUEST['repeatPassword']);
 }
-
-function totalClients()
-{
-    return count(getAllClients());
-}

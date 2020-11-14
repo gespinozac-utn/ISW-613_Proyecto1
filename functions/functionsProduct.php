@@ -60,11 +60,10 @@ function getAllProductsByCategory($idCategory)
 function getAllProducts($idCategory = null)
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM product ";
+    $sql = "SELECT * FROM product WHERE `stock` > 0 ";
     if (!empty($idCategory)) {
-        $sql .= "WHERE idCategory = " . $idCategory;
+        $sql .= "AND idCategory = " . $idCategory;
     }
-    $sql .= " AND `stock` > 0";
     $products = [];
     $result = $conn->query($sql);
     if ($conn->connect_errno) {
