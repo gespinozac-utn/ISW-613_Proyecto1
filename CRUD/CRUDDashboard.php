@@ -43,5 +43,16 @@ function totalProfit()
 
 function totalComprado($idUser)
 {
-    return count(getOrders($idUser));
+    $total = 0;
+    $orders = getOrders($idUser);
+    if (!empty($orders)) {
+        foreach ($orders as $order) {
+            $details = getDetails($order);
+            foreach ($details as $detail) {
+                $product = productById($detail->getIdProduct());
+                $total += $product->getPrice() * $detail->getQuantity();
+            }
+        }
+    }
+    return $total;
 }

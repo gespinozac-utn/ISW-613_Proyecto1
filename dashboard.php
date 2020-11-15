@@ -54,10 +54,10 @@ $user = $_SESSION['user'];
                 <!-- Client dashboard -->
                 <div class="row">
                     <div class="six columns">
-                        <h5>Total de productos: <?php echo $totalProductos; ?></h5>
+                        <h5>Total de productos: <strong><?php echo $totalProductos; ?></strong></h5>
                     </div>
                     <div class="six columns">
-                        <h5>Monto total de compras: <?php echo $totalMonto; ?></h5>
+                        <h5>Monto total de compras: <strong>&#8353;<?php echo $totalMonto; ?></strong></h5>
                     </div>
                 </div>
                 <?php break;
